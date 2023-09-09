@@ -2,18 +2,9 @@ import React from "react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Form } from "../components/Form";
+import SendedFormModal from "../components/SendedFormModal";
 
 export const SupportP = () => {
-    
-    // const nodemailer = require("nodemailer");
-    // // SMTPサーバーの設定
-    // const transporter = nodemailer.createTransport({
-    //     service: "Gmail",
-    //     auth: {
-    //         user: "avaparasa58@gmail.com",
-    //         pass: "senichi7410",
-    //     },
-    // });
 
     return (
         <>
@@ -24,6 +15,7 @@ export const SupportP = () => {
                     <Form></Form>
                 </div>
             </div>
+            <SendedFormModal></SendedFormModal>
             <Footer></Footer>
         </>
     );

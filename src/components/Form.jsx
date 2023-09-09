@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 export const Form = () => {
-
-
     const [name, setName] = useState("");
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -20,13 +18,18 @@ export const Form = () => {
         setMessage(event.target.value);
     };
 
-    useEffect(() => {
-        document.querySelector("#form").addEventListener("submit", (e) => {
-            console.log(e);
-        });
+    const openModal = () => {
+        const modal = document.querySelector(".modal");
+        modal.classList.add("isShow");
+    };
 
-        return () => {};
-    }, []);
+    const handleSubmit = () => {
+        setName("");
+        setMailAddress("");
+        setTitle("");
+        setMessage("");
+        openModal();
+    };
 
     const formKeys = {
         url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLScFl-FUmuOgGlSjMy_nVtbJhQjRc20JMhSkYC9uoqho1q0v6A/formResponse",
@@ -37,40 +40,34 @@ export const Form = () => {
     };
 
     return (
-        <form action={formKeys.url} id="form" method="POST">
-            <label htmlFor={formKeys.name}>
-                <input type="text" name={"entry." + formKeys.name} value={name} onChange={handleNameChange} placeholder="Name" />
-                お名前（必須）
-            </label>
+        <>
+            <form action={formKeys.url} id="form" method="POST" target="hidden_iframe" onSubmit={handleSubmit}>
+                <label htmlFor={"entry." + formKeys.name}>お名前（必須）</label>
+                <input type="text" name={"entry." + formKeys.name} id={"entry." + formKeys.name} value={name} onChange={handleNameChange} placeholder="Name" />
 
-            <label htmlFor={formKeys.mail}>
-                <input type="mail" name={"entry." + formKeys.mail} value={mailAddress} onChange={handleMailAddressChange} placeholder="Mail" />
-                メールアドレス（必須）
-            </label>
+                <label htmlFor={"entry." + formKeys.mail}>メールアドレス（必須）</label>
+                <input type="mail" name={"entry." + formKeys.mail} id={"entry." + formKeys.mail} value={mailAddress} onChange={handleMailAddressChange} placeholder="Mail" />
 
-            <label htmlFor={formKeys.title}>
-                <input type="text" name={"entry." + formKeys.title} value={title} onChange={handleTitleChange} placeholder="Title" />
-                題名
-            </label>
+                <label htmlFor={"entry." + formKeys.title}>題名</label>
+                <input type="text" name={"entry." + formKeys.title} id={"entry." + formKeys.title} value={title} onChange={handleTitleChange} placeholder="Title" />
 
-            <label htmlFor={formKeys.message}>
-                {" "}
+                <label htmlFor={"entry." + formKeys.message}>メッセージ本文</label>
                 <textarea
                     name={"entry." + formKeys.message}
-                    id=""
+                    id={"entry." + formKeys.message}
                     cols="30"
                     rows="10"
                     value={message}
                     onChange={handleMessageChange}
                     placeholder="Message"
                 ></textarea>
-                メッセージ本文
-            </label>
 
-            <button className="btn-A" id="sendBtn">
-                <span className="spn1">送信</span>
-                {/* <span className="spn2">→</span> */}
-            </button>
-        </form>
+                <button className="btn-A" id="sendBtn">
+                    <span className="spn1">送信</span>
+                    {/* <span className="spn2">→</span> */}
+                </button>
+            </form>
+            <iframe name="hidden_iframe" style={{ display: "none" }}></iframe>
+        </>
     );
 };

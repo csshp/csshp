@@ -50,6 +50,50 @@
   opacity: 100%;
 }
 
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.224);
+  visibility: hidden;
+  opacity: 0%;
+  transition: all 0.2s ease;
+}
+.modal .content {
+  width: 500px;
+  height: 200px;
+  background: white;
+  transition: all 0.2s ease;
+  transform: translateY(-10px);
+  border-radius: 0.3rem;
+}
+.modal .content .inner {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal .content .inner p {
+  margin-bottom: 40px;
+}
+.modal .content .inner .btn-A {
+  width: 100px;
+  height: 60px;
+}
+.modal.isShow {
+  opacity: 100%;
+  visibility: visible;
+}
+.modal.isShow .content {
+  transform: translateY(0px);
+}
+
 .supportP.contents {
   display: flex;
   flex-flow: column;
