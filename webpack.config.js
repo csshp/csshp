@@ -41,15 +41,11 @@ module.exports = {
                 ],
             },
             {
-                //test → ファイル名を検知する（CSSファイルを検知する）
                 test: /\.css/,
-                //CSSファイルを検知した場合、以下ルールを適用する（css-loaderを実行せよ）
                 use: [
-                    //ここから追加
                     {
                         loader: "style-loader",
                     },
-                    //ここまで追加
                     {
                         loader: "css-loader",
                     },
