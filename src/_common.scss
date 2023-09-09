@@ -1,0 +1,51 @@
+$purple: rgba(50, 27, 112, 0.779);
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #48435c;
+    border-radius: 3px;
+}
+
+.btn-A {
+    width: 300px;
+    border: 1px solid white;
+    background-color: red;
+}
+
+#moveTopBtn {
+    z-index: 999;
+    $btnSize: 60px;
+
+    background-color: transparent;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: $purple;
+    width: $btnSize;
+    height: $btnSize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    opacity: 0%;
+    visibility: 0;
+    transition: all 0.2s ease;
+    cursor: initial;
+    & svg {
+        color: white;
+    }
+    &:hover {
+        transform: scale(1.05);
+    }
+    &.isShow {
+        cursor: pointer;
+        opacity: 100%;
+    }
+}
