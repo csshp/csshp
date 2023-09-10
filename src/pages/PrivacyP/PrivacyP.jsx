@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
-import { MoveTopBtn } from "../components/MoveTopBtn";
+import { Header } from "../../components/header/Header";
+import { Footer } from "../../components/footer/Footer";
+import { MoveTopBtn } from "../../components/moveTopBtn/MoveTopBtn";
 export const PrivacyP = () => {
 
     useEffect(() => {

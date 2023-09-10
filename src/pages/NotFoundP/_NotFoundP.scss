@@ -1,0 +1,19 @@
+@use "../../variables";
+.NotFound {
+    height: calc(100vh - 30px);
+    & .inner {
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+        padding: variables.$headerHeightScrolled;
+        height: 100%;
+        & img {
+            max-width: 300px;
+        }
+        & .btn-A {
+            margin-top: 50px;
+        }
+    }
+}

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
-import { Form } from "../components/Form";
-import SuccessModal from "../components/SuccessModal";
+import { Header } from "../../components/header/Header";
+import { Footer } from "../../components/footer/Footer";
+import { Form } from "../../components/Form";
+import SuccessModal from "../../components/modal/SuccessModal";
 
 export const SupportP = () => {
     const [isModalOpen, SetModal] = useState(false);

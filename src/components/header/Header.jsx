@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Logo from "../images/css-icon-title-w.png";
+import Logo from "../../images/css-icon-title-w.png";
 import { Cross, TextAlignJustified } from "akar-icons";
 import { Link } from "react-router-dom";
 
@@ -142,6 +142,18 @@ export const Header = (props) => {
                         <span> 閉じる</span>
                     </button>
                 </div>
+            </>
+        );
+    } else if (props.page == "notFound") {
+        return (
+            <>
+                <header>
+                    <div className="inner">
+                        <Link to="/">
+                            <img src={Logo} alt="Logo" />
+                        </Link>
+                    </div>
+                </header>
             </>
         );
     } else {

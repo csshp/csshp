@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Rellax from "rellax";
 
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
-import { KeyVisual } from "../components/KeyVisual";
+import { Header } from "../components/header/Header";
+import { Footer } from "../components/footer/Footer";
+import { KeyVisual } from "../components/keyVisual/KeyVisual";
 
 import { HomeSec } from "../components/sections/HomeSec";
 import { GreetingSec } from "../components/sections/GreetingSec";
@@ -12,7 +12,7 @@ import { ServicesSec } from "../components/sections/ServicesSec";
 import { RecruitSec } from "../components/sections/RecruitSec";
 import { SupportSec } from "../components/sections/SupportSec";
 import { AccessSec } from "../components/sections/AccessSec";
-import { MoveTopBtn } from "../components/MoveTopBtn";
+import { MoveTopBtn } from "../components/moveTopBtn/MoveTopBtn";
 
 export const HomeP = () => {
     useEffect(() => {

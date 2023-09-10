@@ -1,0 +1,12 @@
+@use "../../variables";
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgb(35, 35, 35);
+    color: white;
+    font-size: 0.7rem;
+    height: 30px;
+    background-color: variables.$purple;
+}

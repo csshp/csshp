@@ -1,0 +1,22 @@
+@use "./variables";
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: variables.$headerHeightScrolled;
+}
+
+* {
+    font-family: "Noto Sans JP", sans-serif;
+    letter-spacing: 0.15rem;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #48435c;
+    border-radius: 3px;
+}

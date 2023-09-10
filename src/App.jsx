@@ -1,7 +1,14 @@
-import React from 'react';
+import { Router } from "./Router";
+import React from "react";
 
-const App = () => {
-  return <h1>Hello, world!</h1>;
-};
+import "./App.css";
+
+function App() {
+    return (
+        <>
+            <Router></Router>
+        </>
+    );
+}
 
 export default App;

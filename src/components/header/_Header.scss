@@ -1,0 +1,153 @@
+@use "../../variables";
+header {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: variables.$headerHeight;
+    border-bottom: 1px solid white;
+    color: white;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.146);
+    transition: background-color 0.2s ease, height 0.2s ease;
+    & .inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0px 40px;
+        & img {
+            height: 70px;
+        }
+        & nav {
+            display: flex;
+            align-items: center;
+            & ul {
+                display: flex;
+                align-items: center;
+                margin: 0;
+                & li {
+                    position: relative;
+                    margin: 0px 15px;
+                    white-space: nowrap;
+
+                    & a {
+                        position: relative;
+                        z-index: 5;
+                        display: block;
+                        line-height: 50px;
+                        transition: all 0.2s ease;
+                        border-bottom: 2px solid transparent;
+                        // color: rgb(188, 188, 188);
+                    }
+                    & .underLine {
+                        position: absolute;
+                        z-index: 1;
+                        bottom: 10px;
+                        height: 2px;
+                        width: 100%;
+                        opacity: 0%;
+                        transition: all 0.2s ease;
+                        background-color: white;
+                        transform: translateY(3px);
+                    }
+                    &:hover {
+                        & a {
+                            color: rgb(255, 255, 255);
+                        }
+                        & .underLine {
+                            opacity: 100%;
+                            transform: translateY(0);
+                        }
+                    }
+                }
+            }
+        }
+        & .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+    }
+}
+
+.scrolled {
+    background-color: variables.$purple;
+    border-bottom: 1px solid black;
+    height: variables.$headerHeightScrolled !important;
+}
+
+.hamburgerMenu {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    opacity: 0%;
+    color: black;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden;
+    & nav {
+        display: flex;
+        flex-flow: column;
+        & ul {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            & li {
+                position: relative;
+                margin: 10px 15px;
+                white-space: nowrap;
+
+                & a {
+                    position: relative;
+                    z-index: 5;
+                    display: block;
+                    line-height: 50px;
+                    transition: all 0.2s ease;
+                    border-bottom: 2px solid transparent;
+                }
+                & .underLine {
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 10px;
+                    height: 2px;
+                    width: 100%;
+                    opacity: 0%;
+                    transition: all 0.2s ease;
+                    background-color: rgb(0, 0, 0);
+                    transform: translateY(3px);
+                }
+                &:hover {
+                    & a {
+                        color: black;
+                    }
+                    & .underLine {
+                        opacity: 100%;
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+    }
+    & button {
+        display: flex;
+        align-items: center;
+        margin: 20px 0px;
+        & span {
+            margin-left: 10px;
+        }
+    }
+}
+
+.isShow {
+    opacity: 100%;
+    visibility: visible;
+}

@@ -1,6 +1,6 @@
 import React from "react";
-import { PromptScroll } from "../components/PromptScroll";
-import Swiperr from "./Swiperr";
+import { PromptScroll } from "./PromptScroll";
+import Swiperr from "../swiper/Swiperr";
 
 export const KeyVisual = () => {
     return (
