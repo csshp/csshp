@@ -69,6 +69,8 @@
   transition: all 0.2s ease;
   transform: translateY(-10px);
   border-radius: 0.3rem;
+  opacity: 100%;
+  visibility: visible;
 }
 .modal .content .inner {
   width: 100%;
@@ -85,10 +87,6 @@
 .modal .content .inner .btn-A {
   width: 100px;
   height: 60px;
-}
-.modal.isShow {
-  opacity: 100%;
-  visibility: visible;
 }
 .modal.isShow .content {
   transform: translateY(0px);

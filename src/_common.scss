@@ -69,6 +69,8 @@ $purple: rgba(50, 27, 112, 0.779);
         transition: all 0.2s ease;
         transform: translateY(-10px);
         border-radius: 0.3rem;
+        opacity: 100%;
+        visibility: visible;
         & .inner {
             width: 100%;
             height: 100%;
@@ -87,11 +89,8 @@ $purple: rgba(50, 27, 112, 0.779);
         }
     }
     &.isShow {
-        opacity: 100%;
-        visibility: visible;
         & .content{
             transform: translateY(0px);
         }
-        
     }
 }

@@ -1,53 +1,105 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
+import MailChecker from "mailchecker";
 export const Form = (props) => {
     const [name, setName] = useState("");
-    const handleNameChange = (event) => {
-        setName(event.target.value);
+    const handleNameChange = (e) => {
+        setName(e.target.value);
     };
     const [mailAddress, setMailAddress] = useState("");
-    const handleMailAddressChange = (event) => {
-        setMailAddress(event.target.value);
+    const handleMailAddressChange = (e) => {
+        setMailAddress(e.target.value);
     };
     const [title, setTitle] = useState("");
-    const handleTitleChange = (event) => {
-        setTitle(event.target.value);
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
     };
     const [message, setMessage] = useState("");
-    const handleMessageChange = (event) => {
-        setMessage(event.target.value);
+    const handleMessageChange = (e) => {
+        setMessage(e.target.value);
     };
 
-    const openModal = () => {
-        const modal = document.querySelector(".modal");
-        modal.classList.add("isShow");
+    const formRef = useRef(null);
+    useEffect(() => {
+        const form = formRef.current;
+        if (form) {
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+            });
+        } else {
+            console.warn("フォームが参照できませんでした");
+        }
+        return () => {
+            if (form) {
+                form.removeEventListener("submit", (e) => {
+                    e.preventDefault();
+                });
+            }
+        };
+    }, []);
+
+    const validateForm = () => {
+        if (name === "") {
+            alert("名前を入力してください。");
+            return false;
+        }
+        if (!MailChecker.isValid(mailAddress)) {
+            console.log(mailAddress);
+            alert("有効なメールアドレスを入力してください。");
+            return false;
+        }
+
+        props.changeModalState(true);
+        return true;
     };
 
-    const handleSubmit = () => {
-        // setTimeout(() => {
-        //     setName("");
-        //     setMailAddress("");
-        //     setTitle("");
-        //     setMessage("");
-        // }, 1000);
-        openModal();
+    const formSubmit = (bool, form) => {
+        if (bool) {
+            form.submit();
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        formSubmit(validateForm(), e.target);
     };
 
     return (
         <>
-            <form action={props.formKeys.url} id="form" method="POST" target="hidden_iframe" onSubmit={handleSubmit}>
+            <form action={props.formKeys.url} id="form" method="POST" target="hidden_iframe" ref={formRef} onSubmit={handleSubmit}>
                 <label htmlFor={"entry." + props.formKeys.name}>お名前（必須）</label>
-                <input type="text" name={"entry." + props.formKeys.name} value={name} onChange={handleNameChange} placeholder="Name" />
+                <input
+                    type="text"
+                    name={"entry." + props.formKeys.name}
+                    id={"entry." + props.formKeys.name}
+                    value={name}
+                    onChange={handleNameChange}
+                    placeholder="Name"
+                />
 
                 <label htmlFor={"entry." + props.formKeys.mail}>メールアドレス（必須）</label>
-                <input type="mail" name={"entry." + props.formKeys.mail} value={mailAddress} onChange={handleMailAddressChange} placeholder="Mail" />
+                <input
+                    type="mail"
+                    name={"entry." + props.formKeys.mail}
+                    id={"entry." + props.formKeys.mail}
+                    value={mailAddress}
+                    onChange={handleMailAddressChange}
+                    placeholder="Mail"
+                />
 
                 <label htmlFor={"entry." + props.formKeys.title}>題名</label>
-                <input type="text" name={"entry." + props.formKeys.title} value={title} onChange={handleTitleChange} placeholder="Title" />
+                <input
+                    type="text"
+                    name={"entry." + props.formKeys.title}
+                    id={"entry." + props.formKeys.title}
+                    value={title}
+                    onChange={handleTitleChange}
+                    placeholder="Title"
+                />
 
                 <label htmlFor={"entry." + props.formKeys.message}>メッセージ本文</label>
                 <textarea
                     name={"entry." + props.formKeys.message}
+                    id={"entry." + props.formKeys.message}
                     cols="30"
                     rows="10"
                     value={message}

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Form } from "../components/Form";
-import SendedFormModal from "../components/SendedFormModal";
+import SuccessModal from "../components/SuccessModal";
 
 export const SupportP = () => {
+    const [modal, SetModal] = useState(false);
+    const changeModalState =(bool)=>{
+        SetModal(bool);
+    }
 
     const formKeys = {
         url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLScFl-FUmuOgGlSjMy_nVtbJhQjRc20JMhSkYC9uoqho1q0v6A/formResponse",
@@ -20,10 +24,10 @@ export const SupportP = () => {
             <div className="supportP contents">
                 <div className="inner">
                     <h2>お問い合わせ</h2>
-                    <Form formKeys={formKeys}></Form>
+                    <Form formKeys={formKeys} changeModalState={changeModalState}></Form>
                 </div>
             </div>
-            <SendedFormModal></SendedFormModal>
+            {modal && <SuccessModal changeModalState={changeModalState}></SuccessModal>}
             <Footer></Footer>
         </>
     );
