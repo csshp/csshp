@@ -55,16 +55,16 @@ export const Form = (props) => {
         <>
             <form action={googleFormUrl} id="form" method="POST" target="hidden_iframe" ref={formRef} onSubmit={handleSubmit}>
                 <label htmlFor={`entry.${entryName}`}>お名前（必須）</label>
-                <input type="text" name={`entry.${entryName}`} placeholder="Name" ref={inputName} />
+                <input type="text" name={`entry.${entryName}`} id={`entry.${entryName}`} placeholder="Name" ref={inputName} />
 
                 <label htmlFor={`entry.${entryMail}`}>メールアドレス（必須）</label>
-                <input type="email" name={`entry.${entryMail}`} placeholder="Mail" ref={inputEmail} />
+                <input type="email" name={`entry.${entryMail}`} id={`entry.${entryMail}`} placeholder="Mail" ref={inputEmail} />
 
                 <label htmlFor={`entry.${entryTitle}`}>題名</label>
-                <input type="text" name={`entry.${entryTitle}`} placeholder="Title" ref={inputTitle} />
+                <input type="text" name={`entry.${entryTitle}`} id={`entry.${entryTitle}`} placeholder="Title" ref={inputTitle} />
 
                 <label htmlFor={`entry.${entryMessage}`}>メッセージ本文</label>
-                <textarea name={`entry.${entryMessage}`} cols="30" rows="10" placeholder="Message" ref={inputMessage}></textarea>
+                <textarea name={`entry.${entryMessage}`} id={`entry.${entryMessage}`} cols="30" rows="10" placeholder="Message" ref={inputMessage}></textarea>
 
                 <div className="btnArea">
                     <button className="btn-A" id="sendBtn">
