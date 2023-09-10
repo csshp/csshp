@@ -59,6 +59,14 @@ $responsive3: 500px;
     & .btn-A {
         width: 100px;
     }
+    & .btnArea{
+        display: flex;
+        align-items: center;
+        & .errorMessage{
+            color: red;
+            margin-left: 20px;
+        }
+    }
 }
 
 @media screen and (max-width: $responsive3) {

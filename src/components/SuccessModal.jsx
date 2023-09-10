@@ -7,7 +7,7 @@ const SuccessModal = (props) => {
     const handleClose = () => {
         modal.current.classList.remove("isShow");
         setTimeout(() => {
-            props.changeModalState(false);
+            props.toggleModal(false);
         }, modalTransitionTime * 1000);
     };
     useEffect(() => {

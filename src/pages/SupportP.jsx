@@ -5,8 +5,8 @@ import { Form } from "../components/Form";
 import SuccessModal from "../components/SuccessModal";
 
 export const SupportP = () => {
-    const [modal, SetModal] = useState(false);
-    const changeModalState =(bool)=>{
+    const [isModalOpen, SetModal] = useState(false);
+    const toggleModal=(bool)=>{
         SetModal(bool);
     }
 
@@ -24,10 +24,10 @@ export const SupportP = () => {
             <div className="supportP contents">
                 <div className="inner">
                     <h2>お問い合わせ</h2>
-                    <Form formKeys={formKeys} changeModalState={changeModalState}></Form>
+                    <Form formKeys={formKeys} toggleModal={toggleModal}></Form>
                 </div>
             </div>
-            {modal && <SuccessModal changeModalState={changeModalState}></SuccessModal>}
+            {isModalOpen && <SuccessModal toggleModal={toggleModal}></SuccessModal>}
             <Footer></Footer>
         </>
     );

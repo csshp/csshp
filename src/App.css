@@ -150,6 +150,14 @@
 .supportP.contents .btn-A {
   width: 100px;
 }
+.supportP.contents .btnArea {
+  display: flex;
+  align-items: center;
+}
+.supportP.contents .btnArea .errorMessage {
+  color: red;
+  margin-left: 20px;
+}
 
 @media screen and (max-width: 500px) {
   .supportP.contents .inner {
