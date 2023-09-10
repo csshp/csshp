@@ -13,7 +13,7 @@ export const Form = (props) => {
             return false;
         }
         if (inputEmail.current.value === "") {
-            errorSpanRef.current.textContent = "エラー：有効が入力されていません";
+            errorSpanRef.current.textContent = "エラー：メールアドレスが入力されていません";
             return false;
         }
         if (inputMessage.current.value === "") {

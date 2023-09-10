@@ -63,8 +63,9 @@
   transition: all 0.2s ease;
 }
 .modal .content {
-  width: 500px;
+  width: 100%;
   height: 200px;
+  margin: 0px 20px;
   background: white;
   transition: all 0.2s ease;
   transform: translateY(-10px);
@@ -165,14 +166,14 @@
   }
 }
 .privacyP.contents {
-  margin: 0px 100px;
-  min-height: 600px;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 .privacyP.contents .inner {
   padding-top: 120px;
-  max-width: 1000px;
+  padding: 100px 100px 100px 100px;
+  width: 100%;
 }
 .privacyP.contents .inner h2 {
   font-size: 1.4rem;
@@ -203,6 +204,49 @@
   text-align: end;
 }
 
+@media screen and (max-width: 1100px) {
+  .privacyP.contents .inner {
+    padding: 100px 80px 50px 80px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .privacyP.contents {
+    margin: initial;
+  }
+  .privacyP.contents .inner {
+    padding: 80px 60px 60px 60px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .privacyP.contents {
+    margin: initial;
+  }
+  .privacyP.contents .inner {
+    padding: 80px 20px 20px 20px;
+  }
+  .privacyP.contents .inner h2 {
+    font-size: 1.3rem;
+  }
+  .privacyP.contents .inner h3 {
+    font-size: 1.1rem;
+  }
+  .privacyP.contents .inner h4 {
+    font-size: 1rem;
+  }
+  .privacyP.contents .inner p {
+    font-size: 0.9rem;
+  }
+  .privacyP.contents .inner ul li {
+    font-size: 0.8rem;
+    margin-left: 10px;
+  }
+  .privacyP.contents .inner .block {
+    margin: 60px 0px;
+  }
+  .privacyP.contents .inner .block .shomei {
+    text-align: end;
+  }
+}
 .swiper {
   -webkit-user-select: none;
      -moz-user-select: none;
