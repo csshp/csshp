@@ -15,6 +15,7 @@ import { AccessSec } from "../components/sections/AccessSec";
 import { MoveTopBtn } from "../components/moveTopBtn/MoveTopBtn";
 
 export const HomeP = () => {
+
     useEffect(() => {
         var rellax = new Rellax(".js-rellax", {
             speed: -2,

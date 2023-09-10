@@ -1,5 +1,49 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap");
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.224);
+  visibility: hidden;
+  opacity: 0%;
+  transition: all 0.2s ease;
+}
+.modal .content {
+  width: 100%;
+  max-width: 500px;
+  height: 200px;
+  margin: 0px 20px;
+  background: white;
+  transition: all 0.2s ease;
+  transform: translateY(-10px);
+  border-radius: 0.3rem;
+  opacity: 100%;
+  visibility: visible;
+}
+.modal .content .inner {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal .content .inner p {
+  margin-bottom: 40px;
+}
+.modal .content .inner .btn-A {
+  width: 100px;
+  height: 60px;
+}
+.modal.isShow .content {
+  transform: translateY(0px);
+}
+
 .supportP.contents {
   display: flex;
   flex-flow: column;
@@ -615,50 +659,6 @@ section.access .inner {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.modal {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.224);
-  visibility: hidden;
-  opacity: 0%;
-  transition: all 0.2s ease;
-}
-.modal .content {
-  width: 100%;
-  max-width: 500px;
-  height: 200px;
-  margin: 0px 20px;
-  background: white;
-  transition: all 0.2s ease;
-  transform: translateY(-10px);
-  border-radius: 0.3rem;
-  opacity: 100%;
-  visibility: visible;
-}
-.modal .content .inner {
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-.modal .content .inner p {
-  margin-bottom: 40px;
-}
-.modal .content .inner .btn-A {
-  width: 100px;
-  height: 60px;
-}
-.modal.isShow .content {
-  transform: translateY(0px);
 }
 
 .btn-A {

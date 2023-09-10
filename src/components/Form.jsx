@@ -7,6 +7,13 @@ export const Form = (props) => {
     const inputTitle = useRef();
     const inputMessage = useRef();
 
+    const googleFormUrl = process.env.REACT_APP_GOOGLE_FORM_URL;
+    const entryName = process.env.REACT_APP_FORM_NAME;
+    const entryMail = process.env.REACT_APP_FORM_MAIL;
+    const entryTitle = process.env.REACT_APP_FORM_TITLE;
+    const entryMessage = process.env.REACT_APP_FORM_MESSAGE;
+
+
     const validateForm = () => {
         if (inputName.current.value === "") {
             errorSpanRef.current.textContent = "エラー：名前が入力されていません";
@@ -46,18 +53,18 @@ export const Form = (props) => {
 
     return (
         <>
-            <form action={props.formKeys.url} id="form" method="POST" target="hidden_iframe" ref={formRef} onSubmit={handleSubmit}>
-                <label htmlFor={"entry." + props.formKeys.name}>お名前（必須）</label>
-                <input type="text" name={"entry." + props.formKeys.name} placeholder="Name" ref={inputName} />
+            <form action={googleFormUrl} id="form" method="POST" target="hidden_iframe" ref={formRef} onSubmit={handleSubmit}>
+                <label htmlFor={`entry.${entryName}`}>お名前（必須）</label>
+                <input type="text" name={`entry.${entryName}`} placeholder="Name" ref={inputName} />
 
-                <label htmlFor={"entry." + props.formKeys.mail}>メールアドレス（必須）</label>
-                <input type="email" name={"entry." + props.formKeys.mail} placeholder="Mail" ref={inputEmail} />
+                <label htmlFor={`entry.${entryMail}`}>メールアドレス（必須）</label>
+                <input type="email" name={`entry.${entryMail}`} placeholder="Mail" ref={inputEmail} />
 
-                <label htmlFor={"entry." + props.formKeys.title}>題名</label>
-                <input type="text" name={"entry." + props.formKeys.title} placeholder="Title" ref={inputTitle} />
+                <label htmlFor={`entry.${entryTitle}`}>題名</label>
+                <input type="text" name={`entry.${entryTitle}`} placeholder="Title" ref={inputTitle} />
 
-                <label htmlFor={"entry." + props.formKeys.message}>メッセージ本文</label>
-                <textarea name={"entry." + props.formKeys.message} cols="30" rows="10" placeholder="Message" ref={inputMessage}></textarea>
+                <label htmlFor={`entry.${entryMessage}`}>メッセージ本文</label>
+                <textarea name={`entry.${entryMessage}`} cols="30" rows="10" placeholder="Message" ref={inputMessage}></textarea>
 
                 <div className="btnArea">
                     <button className="btn-A" id="sendBtn">
