@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 export const Form = (props) => {
     const formRef = useRef();
     const errorSpanRef = useRef();
@@ -14,6 +14,22 @@ export const Form = (props) => {
     const entryTitle = process.env.REACT_APP_FORM_TITLE;
     const entryMessage = process.env.REACT_APP_FORM_MESSAGE;
 
+    const [inputNameS, setInputNameS] = useState("");
+    const handleChangeName=(e)=>{
+        setInputNameS(e.target.value)
+    }
+    const [inputEmailS, setInputEmailS] = useState("");
+    const handleChangeEmail=(e)=>{
+        setInputEmailS(e.target.value)
+    }
+    const [inputTitleS, setInputTitleS] = useState("");
+    const handleChangeTitle=(e)=>{
+        setInputTitleS(e.target.value)
+    }
+    const [inputMessageS, setInputMessageS] = useState("");
+    const handleChangeMessage=(e)=>{
+        setInputMessageS(e.target.value)
+    }
 
     const validateForm = () => {
         if (inputName.current.value === "") {
@@ -56,16 +72,16 @@ export const Form = (props) => {
         <>
             <form action={googleFormUrl} id="form" method="POST" target="hidden_iframe" ref={formRef} onSubmit={handleSubmit}>
                 <label htmlFor={`entry.${entryName}`} ref={nameEle}>お名前（必須）</label>
-                <input type="text" name={`entry.${entryName}`} id={`entry.${entryName}`} placeholder="Name" ref={inputName} />
+                <input type="text" name={`entry.${entryName}`} id={`entry.${entryName}`} placeholder="Name" ref={inputName} onChange={handleChangeName} value={inputNameS}/>
 
                 <label htmlFor={`entry.${entryMail}`}>メールアドレス（必須）</label>
-                <input type="email" name={`entry.${entryMail}`} id={`entry.${entryMail}`} placeholder="Mail" ref={inputEmail} />
+                <input type="email" name={`entry.${entryMail}`} id={`entry.${entryMail}`} placeholder="Mail" ref={inputEmail} onChange={handleChangeEmail} value={inputEmailS}/>
 
                 <label htmlFor={`entry.${entryTitle}`}>題名</label>
-                <input type="text" name={`entry.${entryTitle}`} id={`entry.${entryTitle}`} placeholder="Title" ref={inputTitle} />
+                <input type="text" name={`entry.${entryTitle}`} id={`entry.${entryTitle}`} placeholder="Title" ref={inputTitle} onChange={handleChangeTitle} value={inputTitleS}/>
 
                 <label htmlFor={`entry.${entryMessage}`}>メッセージ本文</label>
-                <textarea name={`entry.${entryMessage}`} id={`entry.${entryMessage}`} cols="30" rows="10" placeholder="Message" ref={inputMessage}></textarea>
+                <textarea name={`entry.${entryMessage}`} id={`entry.${entryMessage}`} cols="30" rows="10" placeholder="Message" ref={inputMessage} onChange={handleChangeMessage} value={inputMessageS}></textarea>
 
                 <div className="btnArea">
                     <button className="btn-A" id="sendBtn">
