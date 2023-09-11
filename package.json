@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "kobayashi keisuke",
   "license": "MIT",
+  "homepage": "https://chocominticeeeee.github.io/cssLP/",
   "devDependencies": {
     "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.11",

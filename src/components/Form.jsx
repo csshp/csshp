@@ -9,33 +9,25 @@ export const Form = (props) => {
     const entryTitle = process.env.REACT_APP_FORM_TITLE;
     const entryMessage = process.env.REACT_APP_FORM_MESSAGE;
 
-    const [inputNameS, setInputNameS] = useState("");
-    const handleChangeName = (e) => {
-        setInputNameS(e.target.value);
-    };
-    const [inputEmailS, setInputEmailS] = useState("");
-    const handleChangeEmail = (e) => {
-        setInputEmailS(e.target.value);
-    };
-    const [inputTitleS, setInputTitleS] = useState("");
-    const handleChangeTitle = (e) => {
-        setInputTitleS(e.target.value);
-    };
-    const [inputMessageS, setInputMessageS] = useState("");
-    const handleChangeMessage = (e) => {
-        setInputMessageS(e.target.value);
+    const [inputName, setinputName] = useState("");
+    const [inputEmail, setinputEmail] = useState("");
+    const [inputTitle, setinputTitle] = useState("");
+    const [inputMessage, setinputMessage] = useState("");
+
+    const handleChange = (e, setStateFunction) => {
+        setStateFunction(e.target.value);
     };
 
     const validateForm = () => {
-        if (inputNameS === "") {
+        if (inputName === "") {
             errorSpanRef.current.textContent = "エラー：名前が入力されていません";
             return false;
         }
-        if (inputEmailS === "") {
+        if (inputEmail === "") {
             errorSpanRef.current.textContent = "エラー：メールアドレスが入力されていません";
             return false;
         }
-        if (inputMessageS === "") {
+        if (inputMessage === "") {
             errorSpanRef.current.textContent = "エラー：メッセージ本文が入力されていません";
             return false;
         }
@@ -45,10 +37,10 @@ export const Form = (props) => {
     };
 
     const resetInputs = () => {
-        setInputNameS("");
-        setInputEmailS("");
-        setInputTitleS("");
-        setInputMessageS("");
+        setinputName("");
+        setinputEmail("");
+        setinputTitle("");
+        setinputMessage("");
     };
 
     const formSubmit = (bool, form) => {
@@ -74,8 +66,8 @@ export const Form = (props) => {
                     name={`entry.${entryName}`}
                     id={`entry.${entryName}`}
                     placeholder="Name"
-                    onChange={handleChangeName}
-                    value={inputNameS}
+                    onChange={(e) => handleChange(e, setinputName)}
+                    value={inputName}
                 />
 
                 <label htmlFor={`entry.${entryMail}`}>メールアドレス（必須）</label>
@@ -84,8 +76,8 @@ export const Form = (props) => {
                     name={`entry.${entryMail}`}
                     id={`entry.${entryMail}`}
                     placeholder="Mail"
-                    onChange={handleChangeEmail}
-                    value={inputEmailS}
+                    onChange={(e) => handleChange(e, setinputEmail)}
+                    value={inputEmail}
                 />
 
                 <label htmlFor={`entry.${entryTitle}`}>題名</label>
@@ -94,8 +86,8 @@ export const Form = (props) => {
                     name={`entry.${entryTitle}`}
                     id={`entry.${entryTitle}`}
                     placeholder="Title"
-                    onChange={handleChangeTitle}
-                    value={inputTitleS}
+                    onChange={(e) => handleChange(e, setinputTitle)}
+                    value={inputTitle}
                 />
 
                 <label htmlFor={`entry.${entryMessage}`}>メッセージ本文</label>
@@ -105,8 +97,8 @@ export const Form = (props) => {
                     cols="30"
                     rows="10"
                     placeholder="Message"
-                    onChange={handleChangeMessage}
-                    value={inputMessageS}
+                    onChange={(e) => handleChange(e, setinputMessage)}
+                    value={inputMessage}
                 ></textarea>
 
                 <div className="btnArea">
@@ -117,7 +109,7 @@ export const Form = (props) => {
                     <span className="errorMessage" ref={errorSpanRef}></span>
                 </div>
             </form>
-            <iframe name="hidden_iframe" style={{ display: "block" }}></iframe>
+            <iframe name="hidden_iframe" style={{ display: "none" }}></iframe>
         </>
     );
 };
