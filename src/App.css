@@ -1,5 +1,29 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap");
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+* {
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.15rem;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #48435c;
+  border-radius: 3px;
+}
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -215,30 +239,6 @@
 }
 .NotFound .inner .btn-A {
   margin-top: 50px;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px;
-}
-
-* {
-  font-family: "Noto Sans JP", sans-serif;
-  letter-spacing: 0.15rem;
-}
-
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 100px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #48435c;
-  border-radius: 3px;
 }
 
 header {
@@ -659,6 +659,36 @@ section.access .inner {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+#moveTopBtn {
+  z-index: 999;
+  background-color: transparent;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgba(50, 27, 112, 0.779);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  opacity: 0%;
+  visibility: 0;
+  transition: all 0.2s ease;
+  cursor: initial;
+}
+#moveTopBtn svg {
+  color: white;
+}
+#moveTopBtn:hover {
+  transform: scale(1.05);
+}
+#moveTopBtn.isShow {
+  cursor: pointer;
+  opacity: 100%;
 }
 
 .btn-A {

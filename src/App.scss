@@ -1,16 +1,18 @@
 @use "./variables";
-
+@use "./global";
+//PAGES
 @use "./pages/SupportP/_SupportP.scss";
 @use "./pages/PrivacyP/_PrivacyP.scss";
 @use "./pages/NotFoundP/NotFoundP";
 
-@use "./global";
+//COMPONENTS
 @use "./components/header/Header";
 @use "./components/footer/Footer";
 @use "./components/keyVisual/KeyVisual";
 @use "./components/sections/sections";
 @use "./components/swiper/_Swiperr.scss";
 @use "./components/modal/SuccessModal";
+@use "./components/moveTopBtn/MoveTopBtn";
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap");
 
