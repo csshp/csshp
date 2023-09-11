@@ -12,10 +12,14 @@ export const Router = () => {
         <>
             <ScrollTop></ScrollTop>
             <Routes>
-                <Route path="/" element={<HomeP />} />
+                {/* <Route path="/" element={<HomeP />} />
                 <Route path="/privacy" element={<PrivacyP />} />
                 <Route path="/support" element={<SupportP />} />
-                <Route path="*" element={<NotFoundP />} />
+                <Route path="*" element={<NotFoundP />} /> */}
+                <Route path={`${process.env.PUBLIC_URL}/`} element={<HomeP />} />
+                <Route path={`${process.env.PUBLIC_URL}/privacy`} element={<PrivacyP />} />
+                <Route path={`${process.env.PUBLIC_URL}/support`} element={<SupportP />} />
+                <Route path={`${process.env.PUBLIC_URL}/*`} element={<NotFoundP />} />
             </Routes>
         </>
     );
