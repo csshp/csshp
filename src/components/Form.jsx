@@ -6,6 +6,7 @@ export const Form = (props) => {
     const inputEmail = useRef();
     const inputTitle = useRef();
     const inputMessage = useRef();
+    const nameEle = useRef();
 
     const googleFormUrl = process.env.REACT_APP_GOOGLE_FORM_URL;
     const entryName = process.env.REACT_APP_FORM_NAME;
@@ -54,7 +55,7 @@ export const Form = (props) => {
     return (
         <>
             <form action={googleFormUrl} id="form" method="POST" target="hidden_iframe" ref={formRef} onSubmit={handleSubmit}>
-                <label htmlFor={`entry.${entryName}`}>お名前（必須）</label>
+                <label htmlFor={`entry.${entryName}`} ref={nameEle}>お名前（必須）</label>
                 <input type="text" name={`entry.${entryName}`} id={`entry.${entryName}`} placeholder="Name" ref={inputName} />
 
                 <label htmlFor={`entry.${entryMail}`}>メールアドレス（必須）</label>
@@ -74,7 +75,7 @@ export const Form = (props) => {
                     <span className="errorMessage" ref={errorSpanRef}></span>
                 </div>
             </form>
-            <iframe name="hidden_iframe" style={{ display: "none" }}></iframe>
+            <iframe name="hidden_iframe" style={{ display: "block" }}></iframe>
         </>
     );
 };
