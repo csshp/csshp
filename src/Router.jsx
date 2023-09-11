@@ -8,7 +8,6 @@ import { NotFoundP } from "./pages/NotFoundP/NotFoundP";
 import { ScrollTop } from "./components/ScrollTop";
 
 export const Router = () => {
-
     return (
         <>
             <ScrollTop></ScrollTop>
