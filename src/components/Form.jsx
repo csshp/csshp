@@ -41,12 +41,12 @@ export const Form = (props) => {
         setinputEmail("");
         setinputTitle("");
         setinputMessage("");
+
     };
 
     const formSubmit = (bool, form) => {
         if (bool) {
             form.submit();
-            resetInputs();
         }
     };
 
@@ -109,7 +109,7 @@ export const Form = (props) => {
                     <span className="errorMessage" ref={errorSpanRef}></span>
                 </div>
             </form>
-            <iframe name="hidden_iframe" style={{ display: "none" }}></iframe>
+            <iframe name="hidden_iframe" style={{ display: "block" }} onLoad={resetInputs}></iframe>
         </>
     );
 };
