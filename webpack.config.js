@@ -1,7 +1,9 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require('webpack');
+const webpack = require("webpack");
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     entry: "./index.js",
@@ -11,7 +13,7 @@ module.exports = {
         filename: "index_bundle.js",
     },
     target: "web",
-    devtool: 'inline-source-map',
+    devtool: "inline-source-map",
     devServer: {
         port: "3000",
         static: {
@@ -59,8 +61,51 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.module\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.Loader,
+                    {
+                        loader: "css-loader",
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [["postcss-preset-env"]],
+                            },
+                        },
+                    },
+                    {
+                        loader: "thread-loader",
+                        options: {
+                            workerParallelJobs: 2,
+                        },
+                    },
+                    "sass-loader",
+                ].filter(Boolean),
+            },
         ],
     },
+    optimization: {
+        minimizer: [
+            new TerserPlugin({
+                parallel: 4,
+                terserOptions: {
+                    compress: {
+                        ecma: 5,
+                        warnings: false,
+                        comparisons: false,
+                        inline: 2,
+                    },
+                    mangle: {
+                        safari10: true,
+                    },
+                },
+            }),
+        ],
+    },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "public", "index.html"),
@@ -68,6 +113,9 @@ module.exports = {
         new Dotenv({}),
         new webpack.DefinePlugin({
             "process.env.PUBLIC_URL": JSON.stringify(process.env.PUBLIC_URL),
+        }),
+        new MiniCssExtractPlugin({
+            filename: "style.[contenthash].css",
         }),
     ],
 };
