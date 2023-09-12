@@ -109,7 +109,7 @@ export const Form = (props) => {
                     <span className="errorMessage" ref={errorSpanRef}></span>
                 </div>
             </form>
-            <iframe name="hidden_iframe" style={{ display: "block" }} onLoad={resetInputs}></iframe>
+            <iframe name="hidden_iframe" style={{ display: "none" }} onLoad={resetInputs}></iframe>
         </>
     );
 };
