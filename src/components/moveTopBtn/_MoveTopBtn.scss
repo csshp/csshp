@@ -30,3 +30,9 @@
         opacity: 100%;
     }
 }
+@media (max-width: variables.$responsive2){
+    #moveTopBtn {
+        bottom: 20px;
+        right: 20px;
+    }
+}

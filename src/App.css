@@ -516,6 +516,7 @@ section .inner p {
 }
 section.home {
   text-align: center;
+  height: 600px;
 }
 section.greetings {
   color: white;
@@ -548,49 +549,53 @@ section.services {
   background-position: center;
   height: 700px;
 }
-section.services h3 {
-  font-size: 1.5rem;
+section.services .inner h3 {
+  font-size: 1.4rem;
 }
-section.services p {
-  font-size: 1.3rem;
+section.services .inner p {
+  font-size: 1.1rem;
+  margin: 0;
 }
-section.services .contents {
+section.services .inner .contents {
   display: flex;
   flex-flow: column;
   align-items: center;
   width: 100%;
 }
-section.services .contents .content {
+section.services .inner .contents .content {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-section.services .contents .content .texts {
+section.services .inner .contents .content .texts {
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: start;
 }
-section.services .contents .content .img {
+section.services .inner .contents .content .img {
   overflow: hidden;
   width: 480px;
   height: 250px;
   border-radius: 10px;
 }
-section.services .contents .content .img img {
+section.services .inner .contents .content .img img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-section.services .contents .content .img:nth-of-type(1) {
-  background: no-repeat url("./images/greetings2.jpg");
-  background-size: cover;
-  background-position: center;
-}
-section.services .contents .content .img:nth-of-type(2) {
-  background: no-repeat url("./images/greetings1.jpg");
-  background-size: cover;
-  background-position: center;
-}
-section.services .contents .content:nth-of-type(1) {
+section.services .inner .contents .content:nth-of-type(1) {
   margin-bottom: 20px;
+}
+section.services .inner .contents .content:nth-of-type(1) .img {
+  margin-left: 20px;
+}
+section.services .inner .contents .content:nth-of-type(2) {
+  margin-bottom: 20px;
+  justify-content: initial;
+}
+section.services .inner .contents .content:nth-of-type(2) .img {
+  margin-right: 20px;
 }
 section.recruit {
   text-align: center;
@@ -691,6 +696,12 @@ section.access .inner {
   opacity: 100%;
 }
 
+@media (max-width: 700px) {
+  #moveTopBtn {
+    bottom: 20px;
+    right: 20px;
+  }
+}
 .btn-A {
   display: flex;
   justify-content: center;

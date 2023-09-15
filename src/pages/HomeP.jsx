@@ -18,7 +18,7 @@ export const HomeP = () => {
 
     useEffect(() => {
         var rellax = new Rellax(".js-rellax", {
-            speed: -2,
+            speed: -5,
         });
 
         // IntersectionObserverの作成
