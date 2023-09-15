@@ -32,6 +32,7 @@
     "googleapis": "^126.0.1",
     "install": "^0.13.0",
     "mailchecker": "^5.0.9",
+    "mini-css-extract-plugin": "^2.7.6",
     "nodemailer": "^6.9.4",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
@@ -42,11 +43,11 @@
     "rellax": "^1.12.1",
     "stream": "^0.0.2",
     "style-loader": "^3.3.3",
-    "swiper": "^10.2.0"
+    "swiper": "^10.2.0",
+    "terser-webpack-plugin": "^5.3.9"
   },
   "scripts": {
     "start": "webpack-dev-server .",
-    "build": "webpack .",
-    "deploy": "npm run build && gh-pages -d build"
+    "build": "webpack . --mode=production"
   }
 }
