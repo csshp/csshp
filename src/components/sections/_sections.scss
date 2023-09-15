@@ -13,8 +13,9 @@ section {
         z-index: 0;
         position: absolute;
         width: 100%;
-        height: 180%;
+        height: 130%;
         object-fit: cover;
+        filter: brightness(0.8);
     }
     & .inner {
         z-index: 1;
@@ -24,7 +25,8 @@ section {
         & h2 {
             font-size: 1.8rem;
             margin-bottom: 30px;
-            font-weight: 900;
+            font-weight: 600;
+            color: white;
         }
         & p {
             margin: 15px;
@@ -32,8 +34,12 @@ section {
         }
     }
     &.home {
+        & h2{
+            color: black;
+        }
         text-align: center;
         height: 600px;
+        
     }
     &.greetings {
         color: white;
@@ -44,7 +50,11 @@ section {
         & .inner {
             & div {
                 text-align: end;
+                margin-right:15px;
             }
+        }
+        & .bg{
+            top: -200px;
         }
     }
     &.companyProfile {

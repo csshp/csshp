@@ -20,7 +20,7 @@ export const CompanyProfileSec = () => {
                             <td>・所在地</td>
                             <td>
                                 〒060-0063 <br />
-                                札幌市中央区南３条西１３丁目３２０－１３　アクアステージ４階
+                                <span className="nowrap">札幌市中央区南３条西１３丁目３２０－１３　</span><span className="nowrap">アクアステージ４階</span>
                             </td>
                         </tr>
                         <tr>

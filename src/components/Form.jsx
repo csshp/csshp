@@ -95,7 +95,7 @@ export const Form = (props) => {
                     name={`entry.${entryMessage}`}
                     id={`entry.${entryMessage}`}
                     cols="30"
-                    rows="10"
+                    rows="8"
                     placeholder="Message"
                     onChange={(e) => handleChange(e, setinputMessage)}
                     value={inputMessage}

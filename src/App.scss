@@ -132,6 +132,35 @@
                 }
             }
         }
+        &.services {
+            height: 500px;
+            & .inner {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-flow: column;
+                & .contents {
+                    & .content {
+                        justify-content: center !important;
+                        & .img {
+                            display: none;
+                        }
+                        & .texts {
+                            & p {
+                                margin-left: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.access {
+            & .adress {
+                & p {
+                    font-size: 0.9rem !important;
+                }
+            }
+        }
     }
 }
 
@@ -167,6 +196,35 @@
             }
             & p {
                 font-size: 0.75rem;
+            }
+        }
+        &.companyProfile {
+            & .inner {
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                & tr {
+                    display: flex;
+                    flex-flow: column;
+                    & td:nth-of-type(2) {
+                        margin-left: 30px;
+                    }
+                }
+            }
+        }
+        &.services {
+            & .inner {
+                & .texts {
+                    & h3 {
+                        font-size: 1.1rem !important;
+                    }
+                    & p {
+                        font-size: 0.9rem;
+                    }
+                }
+                & .content:nth-of-type(1) {
+                    margin-bottom: 50px !important;
+                }
             }
         }
     }

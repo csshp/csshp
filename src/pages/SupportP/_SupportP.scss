@@ -11,10 +11,12 @@ $responsive3: 500px;
     justify-content: center;
     align-items: center;
     width: 100%;
+    min-height: 80vh;
     margin-top: 150px;
     & .inner {
         width: 100%;
         padding: 0px 50px;
+        
         display: flex;
         flex-flow: column;
         justify-content: center;
