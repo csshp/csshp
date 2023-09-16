@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import { init, emailjs } from "emailjs-com";
+
 export const Form = (props) => {
     const formRef = useRef();
     const errorSpanRef = useRef();
@@ -41,7 +43,6 @@ export const Form = (props) => {
         setinputEmail("");
         setinputTitle("");
         setinputMessage("");
-
     };
 
     const formSubmit = (bool, form) => {
@@ -50,17 +51,54 @@ export const Form = (props) => {
         }
     };
 
-    const handleSubmit = (e) => {
+    // https://qiita.com/Annoske/items/11bc6be57266d2c0dbe6
+    // https://dashboard.emailjs.com/admin/templates/1itycnx
+    const sendMail = () => {
+        init("chocominticeeeee");
+        const emailjsServiceId = "service_1fvknrn";
+        const emailjsTemplateId = "service_1fvknrn";
+        const templateParams = {
+            from_name: emailName,
+            message: emailText,
+        };
+        emailjs.send(emailjsServiceId, emailjsTemplateId, templateParams).then(() => {
+            // do something
+        });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        formSubmit(validateForm(), e.target);
+        // formSubmit(validateForm(), e.target);
+        try {
+            const formData = {
+                name: inputName,
+                mail: inputEmail,
+                title: inputTitle,
+                message: inputMessage,
+            };
+
+            const response = await fetch("/api/send-email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.status === 200) {
+                alert("メールが送信されました");
+            } else {
+                alert("メールの送信に失敗しました");
+            }
+        } catch (error) {
+            console.error("エラー:", error);
+        }
     };
 
     return (
         <>
             <form action={googleFormUrl} id="form" method="POST" target="hidden_iframe" ref={formRef} onSubmit={handleSubmit}>
-                <label htmlFor={`entry.${entryName}`}>
-                    お名前（必須）
-                </label>
+                <label htmlFor={`entry.${entryName}`}>お名前（必須）</label>
                 <input
                     type="text"
                     name={`entry.${entryName}`}
