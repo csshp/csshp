@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { init, emailjs } from "emailjs-com";
+import { init, send } from "emailjs-com";
 
 export const Form = (props) => {
     const formRef = useRef();
@@ -50,49 +50,35 @@ export const Form = (props) => {
             form.submit();
         }
     };
-
-    // https://qiita.com/Annoske/items/11bc6be57266d2c0dbe6
-    // https://dashboard.emailjs.com/admin/templates/1itycnx
-    const sendMail = () => {
-        init("chocominticeeeee");
-        const emailjsServiceId = "service_1fvknrn";
-        const emailjsTemplateId = "service_1fvknrn";
-        const templateParams = {
-            from_name: emailName,
-            message: emailText,
+    
+    const sendMailByEmailjs = () => {
+        const emailJsIds = {
+            publicID: process.env.REACT_APP_EMAILJS_PUBLIC_ID,
+            serviceID: process.env.REACT_APP_EMAILJS_SERVICE_ID,
+            templateID: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         };
-        emailjs.send(emailjsServiceId, emailjsTemplateId, templateParams).then(() => {
-            // do something
-        });
+        if (emailJsIds.publicID !== undefined && emailJsIds.serviceID !== undefined && emailJsIds.templateID !== undefined) {
+            init(emailJsIds.publicID);
+            const template_param = {
+                emj_name: inputName,
+                emj_email: inputEmail,
+                emj_title: inputTitle,
+                emj_message: inputMessage,
+            };
+            console.log(template_param);
+
+            send(emailJsIds.serviceID, emailJsIds.templateID, template_param).then(() => {
+                console.log("EmaijJsでメールを送信しました");
+            });
+        } else {
+            console.log("EmailJSに必要な情報が読み込まれませんでした。");
+        }
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        // formSubmit(validateForm(), e.target);
-        try {
-            const formData = {
-                name: inputName,
-                mail: inputEmail,
-                title: inputTitle,
-                message: inputMessage,
-            };
-
-            const response = await fetch("/api/send-email", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (response.status === 200) {
-                alert("メールが送信されました");
-            } else {
-                alert("メールの送信に失敗しました");
-            }
-        } catch (error) {
-            console.error("エラー:", error);
-        }
+        formSubmit(validateForm(), e.target);
+        // sendMailByEmailjs();
     };
 
     return (
