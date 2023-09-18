@@ -110,10 +110,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "public", "index.html"),
         }),
-        new Dotenv({}),
-        // new webpack.DefinePlugin({
-        //     "process.env.PUBLIC_URL": JSON.stringify(process.env.PUBLIC_URL),
-        // }),
+        new Dotenv({
+            path: './.env.local',
+        }),
+        new webpack.DefinePlugin({
+            "process.env.PUBLIC_URL": JSON.stringify(process.env.PUBLIC_URL),
+            'process.env.hoge': '"untiiiii"',
+        }),
         new MiniCssExtractPlugin({
             filename: "style.[contenthash].css",
         }),
