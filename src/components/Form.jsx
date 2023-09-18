@@ -6,7 +6,6 @@ export const Form = (props) => {
     const errorSpanRef = useRef();
 
     const googleFormUrl = process.env.REACT_APP_GOOGLE_FORM_URL;
-    console.log(process.env.REACT_APP_GOOGLE_FORM_URL);
     const entryName = process.env.REACT_APP_FORM_NAME;
     const entryMail = process.env.REACT_APP_FORM_MAIL;
     const entryTitle = process.env.REACT_APP_FORM_TITLE;
