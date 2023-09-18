@@ -11,7 +11,7 @@ export const Map = () => {
         lat: 43.054758461058306,
         lng: 141.33781368899332,
     };
-    const apiKey = "AIzaSyBOOFl7VgudDn4OsqQ_u-ClLNRj7xMXDpo";
+    const apiKey = process.env.REACT_APP_GOOGLE_MAP_API;
     const existingScript = document.querySelector(`script[src^="https://maps.googleapis.com/maps/api/js?key=${apiKey}"]`);
     if (existingScript) {
         return (
