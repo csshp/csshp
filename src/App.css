@@ -422,7 +422,6 @@ footer {
 }
 .KeyVisual .content {
   z-index: 5;
-  margin-top: 100px;
 }
 .KeyVisual .content h1 {
   display: flex;
