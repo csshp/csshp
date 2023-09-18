@@ -5,13 +5,13 @@ export const Form = (props) => {
     const formRef = useRef();
     const errorSpanRef = useRef();
 
-    console.log("process.env.REACT_APP_ORIGIN :"+process.env.REACT_APP_ORIGIN);
-
     const googleFormUrl = process.env.REACT_APP_GOOGLE_FORM_URL;
     const entryName = process.env.REACT_APP_FORM_NAME;
     const entryMail = process.env.REACT_APP_FORM_MAIL;
     const entryTitle = process.env.REACT_APP_FORM_TITLE;
     const entryMessage = process.env.REACT_APP_FORM_MESSAGE;
+
+    console.log(process.env.REACT_APP_ENVTEST);
 
     const [inputName, setinputName] = useState("");
     const [inputEmail, setinputEmail] = useState("");
