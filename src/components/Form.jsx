@@ -11,8 +11,6 @@ export const Form = (props) => {
     const entryTitle = process.env.REACT_APP_FORM_TITLE;
     const entryMessage = process.env.REACT_APP_FORM_MESSAGE;
 
-    console.log(process.env.hoge);
-
     const [inputName, setinputName] = useState("");
     const [inputEmail, setinputEmail] = useState("");
     const [inputTitle, setinputTitle] = useState("");
