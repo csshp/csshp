@@ -1,6 +1,6 @@
 import React from "react";
 import { Map } from "../GoogleMap";
-import bg from "../../images/keyvisual/access.jpg";
+import bg from "../../images/keyvisual/access2.jpg";
 
 export const AccessSec = () => {
     return (
