@@ -1,4 +1,3 @@
-import { useClient } from 'next/server';
 import React, { useEffect } from "react";
 import Logo from "../../images/css-icon-title-w.png";
 import { Cross, TextAlignJustified } from "akar-icons";
