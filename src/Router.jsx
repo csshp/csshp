@@ -6,13 +6,17 @@ import { PrivacyP } from "./pages/PrivacyP/PrivacyP";
 import { SupportP } from "./pages/SupportP/SupportP";
 import { NotFoundP } from "./pages/NotFoundP/NotFoundP";
 import { ScrollTop } from "./components/ScrollTop";
+import { RecruitP } from "./pages/RecruitP/RecruitP";
 
 export const Router = () => {
+    let recruitingStatus = null;
+    process.env.REACT_APP_RECRUITING == "true" ? (recruitingStatus = true) : (recruitingStatus = false);
     return (
         <>
             <ScrollTop></ScrollTop>
             <Routes>
                 <Route path="/" element={<HomeP />} />
+                <Route path="/recruit" element={<RecruitP recruit={recruitingStatus} />} />
                 <Route path="/privacy" element={<PrivacyP />} />
                 <Route path="/support" element={<SupportP />} />
                 <Route path="*" element={<NotFoundP />} />

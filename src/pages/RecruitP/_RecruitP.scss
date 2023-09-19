@@ -1,0 +1,44 @@
+.recruitP {
+    padding: 100px 0px;
+    min-height: 96vh;
+    & .inner {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        & .infoBlock {
+            width: 100%;
+            max-width: 1000px;
+            & h2.title {
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                font-size: 2rem;
+            }
+            & .recruitInfo {
+                & li {
+                    display: flex;
+                    justify-content: center;
+                    padding: 20px 0px;
+                    margin-bottom: 20px;
+                    border-bottom: 1px solid black;
+                    & .title {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 300px;
+                        margin-right: 20px;
+                    }
+                    & .texts {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .noRecruiting{
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 100px;
+        }
+    }
+}

@@ -1,11 +1,13 @@
 @use "./variables";
 @use "./global";
 //PAGES
+@use "./pages/RecruitP/RecruitP";
 @use "./pages/SupportP/_SupportP.scss";
 @use "./pages/PrivacyP/_PrivacyP.scss";
 @use "./pages/NotFoundP/NotFoundP";
 
 //COMPONENTS
+@use "./components/loader/Loader";
 @use "./components/header/Header";
 @use "./components/footer/Footer";
 @use "./components/keyVisual/KeyVisual";

@@ -28,6 +28,49 @@ html {
   white-space: nowrap;
 }
 
+.recruitP {
+  padding: 100px 0px;
+  min-height: 96vh;
+}
+.recruitP .inner {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.recruitP .inner .infoBlock {
+  width: 100%;
+  max-width: 1000px;
+}
+.recruitP .inner .infoBlock h2.title {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  font-size: 2rem;
+}
+.recruitP .inner .infoBlock .recruitInfo li {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+.recruitP .inner .infoBlock .recruitInfo li .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  margin-right: 20px;
+}
+.recruitP .inner .infoBlock .recruitInfo li .texts {
+  width: 100%;
+}
+.recruitP .inner .noRecruiting {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 100px;
+}
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -246,6 +289,56 @@ html {
   margin-top: 50px;
 }
 
+.loader {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  position: fixed;
+  z-index: 9999999;
+  height: 100vh;
+  width: 100vw;
+  animation-name: loaderAnimation;
+  animation-duration: 1.4s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  background: linear-gradient(141deg, rgb(23, 8, 78) 0%, rgb(188, 0, 255) 100%);
+  background-size: 200% 200%;
+}
+.loader .line {
+  height: 1px;
+  width: 0%;
+  background: white;
+  animation-name: loaderLineAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes loaderAnimation {
+  0% {
+    background-position: 0% 0%;
+    opacity: 100%;
+  }
+  70% {
+    opacity: 100%;
+  }
+  100% {
+    background-position: 100% 100%;
+    opacity: 0%;
+    display: none;
+  }
+}
+@keyframes loaderLineAnimation {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    width: 100%;
+  }
+}
 header {
   z-index: 99;
   position: fixed;
