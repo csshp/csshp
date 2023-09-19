@@ -35,7 +35,9 @@ html {
 }
 
 .pageContents {
+  min-height: calc(100vh - 30px);
   padding-top: 120px;
+  padding-bottom: 60px;
 }
 .pageContents .inner {
   width: 100%;
@@ -191,11 +193,6 @@ html {
     padding: 0px 20px;
   }
 }
-.pageContents.privacyP .inner h2 {
-  font-size: 1.4rem;
-  font-weight: 500;
-  margin-bottom: 30px;
-}
 .pageContents.privacyP .inner h3 {
   font-size: 1.2rem;
   margin: 20px 0px;
@@ -214,7 +211,7 @@ html {
   margin-left: 20px;
 }
 .pageContents.privacyP .inner .block {
-  margin: 60px 0px;
+  margin: 40px 0px;
 }
 .pageContents.privacyP .inner .block .shomei {
   text-align: end;
@@ -347,6 +344,9 @@ header {
           backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.146);
   transition: background-color 0.2s ease, height 0.2s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 header .inner {
   display: flex;
@@ -479,6 +479,11 @@ header .inner .hamburger {
   visibility: visible;
 }
 
+@media (max-width: 700px) {
+  .hamburgerMenu nav ul li {
+    margin: 3px 15px;
+  }
+}
 footer {
   display: flex;
   justify-content: center;
@@ -557,7 +562,7 @@ footer {
   background-size: 300% 200%;
   background-position: 50% 50%;
 }
-@media screen and (max-width: 900px) {
+@media (max-width: 900px) {
   .KeyVisual .scrolltext {
     right: -40px;
   }
@@ -574,6 +579,27 @@ footer {
   }
 }
 
+@media (max-width: 1100px) {
+  .KeyVisual .content p {
+    font-size: 0.9rem;
+  }
+  .KeyVisual .scrolltext {
+    right: -40px !important;
+  }
+}
+@media (max-width: 700px) {
+  .KeyVisual .scrolltext {
+    right: -50px !important;
+  }
+}
+@media (max-width: 500px) {
+  .KeyVisual .content p {
+    font-size: 0.7rem;
+  }
+  .KeyVisual .scrolltext {
+    right: -60px !important;
+  }
+}
 section {
   position: relative;
   z-index: 1;

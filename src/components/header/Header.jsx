@@ -29,9 +29,6 @@ export const Header = (props) => {
     const hamburgerClose = () => {
         document.querySelector(".hamburgerMenu").classList.remove("isShow");
     };
-    const moveTop = () => {
-        window.scrollTo(0, 0);
-    };
 
     if (props.page == "home") {
         return (
@@ -42,6 +39,7 @@ export const Header = (props) => {
                             <img src={Logo} alt="Logo" />
                         </a>
                         <nav>
+                            {/* ホームP、通常 */}
                             <ul>
                                 <li>
                                     <a href="#top">ホーム</a>
@@ -72,9 +70,7 @@ export const Header = (props) => {
                                     <div className="underLine"></div>
                                 </li>
                                 <li>
-                                    <Link to="/privacy" onClick={moveTop}>
-                                        プライバシーポリシー
-                                    </Link>
+                                    <Link to="/privacy">プライバシーポリシー</Link>
                                     <div className="underLine"></div>
                                 </li>
                             </ul>
@@ -86,58 +82,53 @@ export const Header = (props) => {
                 </header>
                 <div className="hamburgerMenu" onClick={hamburgerClose}>
                     <nav>
+                        {/* ホームＰ，ハンバーガー */}
                         <ul>
                             <li>
-                                <a href="#top" onClick={hamburgerClose}>
+                                <a href="#top" >
                                     ホーム
                                 </a>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                <a href="#greetings" onClick={hamburgerClose}>
+                                <a href="#greetings" >
                                     代表挨拶
                                 </a>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                <a href="#companyProfile" onClick={hamburgerClose}>
+                                <a href="#companyProfile" >
                                     会社概要
                                 </a>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                <a href="#services" onClick={hamburgerClose}>
+                                <a href="#services" >
                                     事業内容
                                 </a>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                <a href="#recruit" onClick={hamburgerClose}>
-                                    採用情報
-                                </a>
+                                <Link to="/recruit">採用情報</Link>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                <a href="#support" onClick={hamburgerClose}>
-                                    お問い合わせ
-                                </a>
+                                <Link to="/support">お問い合わせ</Link>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                <a href="#access" onClick={hamburgerClose}>
+                                <a href="#access" >
                                     アクセス
                                 </a>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                <Link to="/privacy" onClick={moveTop}>
-                                    プライバシーポリシー
-                                </Link>
+                                <Link to="/privacy">プライバシーポリシー</Link>
                                 <div className="underLine"></div>
                             </li>
                         </ul>
                     </nav>
-                    <button className="close" onClick={hamburgerClose}>
+                    <button className="close" >
                         <Cross strokeWidth={1} size={25} />
                         <span> 閉じる</span>
                     </button>
@@ -164,7 +155,8 @@ export const Header = (props) => {
                         <Link to="/">
                             <img src={Logo} alt="Logo" />
                         </Link>
-                        <nav>
+                        <nav >
+                            {/* ホームＰ以外通常 */}
                             <ul>
                                 <li>
                                     <Link to="/">ホーム</Link>
@@ -195,9 +187,7 @@ export const Header = (props) => {
                                     <div className="underLine"></div>
                                 </li>
                                 <li>
-                                    <Link to="/privacy" onClick={moveTop}>
-                                        プライバシーポリシー
-                                    </Link>
+                                    <Link to="/privacy">プライバシーポリシー</Link>
                                     <div className="underLine"></div>
                                 </li>
                             </ul>
@@ -207,67 +197,47 @@ export const Header = (props) => {
                         </div>
                     </div>
                 </header>
-                <div className="hamburgerMenu">
+                <div className="hamburgerMenu" onClick={hamburgerClose}>
                     <nav>
+                        {/* ほーむＰ以外ハンバーガー */}
                         <ul>
                             <li>
-                                {/* <Link to="/">ホーム</Link> */}
-                                <a href="#" onClick={hamburgerClose}>
-                                    ホーム
-                                </a>
+                                <Link to="/">ホーム</Link>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                {/* <Link to="/greetings">代表挨拶</Link> */}
-                                <a href="#greetings" onClick={hamburgerClose}>
-                                    代表挨拶
-                                </a>
+                                <Link to="/">代表挨拶</Link>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                {/* <Link to="/companyprofile">会社概要</Link> */}
-                                <a href="#companyProfile" onClick={hamburgerClose}>
-                                    会社概要
-                                </a>
+                                <Link to="/">会社概要</Link>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                {/* <Link to="/services">事業内容</Link> */}
-                                <a href="#services" onClick={hamburgerClose}>
-                                    事業内容
-                                </a>
+                                <Link to="/">事業内容</Link>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                {/* <Link to="/recruit">採用情報</Link> */}
-                                <a href="#recruit" onClick={hamburgerClose}>
-                                    事業内容
-                                </a>
+                                <Link to="/recruit">採用情報</Link>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                {/* <Link to="/support">お問い合わせ</Link> */}
-                                <a href="#support" onClick={hamburgerClose}>
-                                    お問い合わせ
-                                </a>
+                                <Link to="/support">お問い合わせ</Link>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                {/* <Link to="/access">アクセス</Link> */}
-                                <a href="#access" onClick={hamburgerClose}>
-                                    アクセス
-                                </a>
+                                <Link to="/">アクセス</Link>
                                 <div className="underLine"></div>
                             </li>
                             <li>
-                                <Link to="/privacy" onClick={hamburgerClose}>
+                                <Link to="/privacy" >
                                     プライバシーポリシー
                                 </Link>
                                 <div className="underLine"></div>
                             </li>
                         </ul>
                     </nav>
-                    <button className="close" onClick={hamburgerClose}>
+                    <button className="close" >
                         <Cross strokeWidth={1} size={25} />
                         <span> 閉じる</span>
                     </button>

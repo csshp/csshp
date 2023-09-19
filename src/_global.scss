@@ -32,7 +32,9 @@ html {
 }
 
 .pageContents{
+    min-height: calc(100vh - 30px);
     padding-top: 120px;
+    padding-bottom: 60px;
     & .inner{
         width: 100%;
         padding: 0px 100px;

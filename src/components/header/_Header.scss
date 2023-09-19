@@ -13,6 +13,7 @@ header {
     backdrop-filter: blur(5px);
     background-color: rgba(0, 0, 0, 0.146);
     transition: background-color 0.2s ease, height 0.2s ease;
+    user-select: none;
     & .inner {
         display: flex;
         align-items: center;
@@ -150,4 +151,20 @@ header {
 .isShow {
     opacity: 100%;
     visibility: visible;
+}
+
+@media (max-width: variables.$responsive1) {
+}
+@media (max-width: variables.$responsive2) {
+    .hamburgerMenu {
+        & nav {
+            & ul {
+                & li {
+                    margin: 3px 15px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: variables.$responsive3) {
 }

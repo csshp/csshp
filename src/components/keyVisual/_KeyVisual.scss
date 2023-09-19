@@ -69,7 +69,7 @@
                 background-position: 50% 50%;
             }
         }
-        @media screen and (max-width: 900px) {
+        @media (max-width: 900px) {
             right: -40px;
         }
     }
@@ -83,6 +83,39 @@
         }
         100% {
             background-position: 0% 50%;
+        }
+    }
+}
+
+@media (max-width: variables.$responsive1) {
+    .KeyVisual {
+        & .content{
+            & p{
+                font-size: 0.9rem;
+            }
+        }
+        & .scrolltext {
+            right: -40px !important;
+        }
+    }
+}
+@media (max-width: variables.$responsive2) {
+    .KeyVisual {
+        & .scrolltext {
+            right: -50px !important;
+        }
+    }
+}
+@media (max-width: variables.$responsive3) {
+    .KeyVisual {
+
+        & .content{
+            & p{
+                font-size: 0.7rem;
+            }
+        }
+        & .scrolltext {
+            right: -60px !important;
         }
     }
 }
