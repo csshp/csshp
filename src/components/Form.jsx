@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { init, send } from "emailjs-com";
 
 export const Form = (props) => {
     const formRef = useRef();
     const errorSpanRef = useRef();
+    const sendBy = useRef();
 
     const googleFormUrl = process.env.REACT_APP_GOOGLE_FORM_URL;
     const entryName = process.env.REACT_APP_FORM_NAME;
@@ -88,6 +89,11 @@ export const Form = (props) => {
         enableEmailJs ? sendMailByEmailjs(validateForm()) : sendGoogleForm(validateForm(), e.target);
     };
 
+    useEffect(() => {
+        enableEmailJs ? (sendBy.current.textContent = "Send by EmailJS") : (sendBy.current.textContent = "Send to GoogleForm");
+        return () => {};
+    }, []);
+
     return (
         <>
             <form action={googleFormUrl} id="form" method="POST" target="hidden_iframe" ref={formRef} onSubmit={handleSubmit}>
@@ -131,7 +137,9 @@ export const Form = (props) => {
                     onChange={(e) => handleChange(e, setinputMessage)}
                     value={inputMessage}
                 ></textarea>
-
+                <span style={{ opacity: "0.5", fontSize: "0.3rem", textAlign: "end" }} ref={sendBy}>
+                    xxxxx
+                </span>
                 <div className="btnArea">
                     <button className="btn-A" id="sendBtn">
                         <span className="spn1">送信</span>
