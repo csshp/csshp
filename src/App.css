@@ -333,7 +333,7 @@ html {
   }
 }
 header {
-  z-index: 99;
+  z-index: 100;
   position: fixed;
   top: 0;
   width: 100%;
@@ -410,7 +410,7 @@ header .inner .hamburger {
 }
 
 .hamburgerMenu {
-  z-index: 100;
+  z-index: 110;
   position: fixed;
   top: 0;
   display: flex;
@@ -769,7 +769,7 @@ section.access .inner {
 }
 
 #moveTopBtn {
-  z-index: 999;
+  z-index: 100;
   background-color: transparent;
   position: fixed;
   bottom: 50px;
