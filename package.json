@@ -53,6 +53,6 @@
   },
   "scripts": {
     "start": "webpack-dev-server .",
-    "build": "webpack . --mode=production"
+    "build": "webpack . --mode=development"
   }
 }
