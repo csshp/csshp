@@ -28,44 +28,67 @@ html {
   white-space: nowrap;
 }
 
-.recruitP {
-  padding: 100px 0px;
-  min-height: 96vh;
+.pageTitle {
+  text-align: center;
+  font-size: 1.8rem !important;
+  padding: 30px 0px;
 }
-.recruitP .inner {
+
+.pageContents {
+  padding-top: 120px;
+}
+.pageContents .inner {
+  width: 100%;
+  padding: 0px 100px;
   display: flex;
   flex-flow: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
-.recruitP .inner .infoBlock {
+
+@media (max-width: 1100px) {
+  .pageContents .inner {
+    padding: 0px 80px;
+  }
+}
+@media (max-width: 700px) {
+  .pageContents .inner {
+    padding: 0px 50px;
+  }
+}
+@media (max-width: 500px) {
+  .pageContents .inner {
+    padding: 0px 20px;
+  }
+}
+.pageContents.recruitP .inner .infoBlock {
   width: 100%;
   max-width: 1000px;
 }
-.recruitP .inner .infoBlock h2.title {
+.pageContents.recruitP .inner .infoBlock h2.title {
   height: 100px;
   line-height: 100px;
   text-align: center;
   font-size: 2rem;
 }
-.recruitP .inner .infoBlock .recruitInfo li {
+.pageContents.recruitP .inner .infoBlock .recruitInfo li {
   display: flex;
   justify-content: center;
   padding: 20px 0px;
   margin-bottom: 20px;
   border-bottom: 1px solid black;
 }
-.recruitP .inner .infoBlock .recruitInfo li .title {
+.pageContents.recruitP .inner .infoBlock .recruitInfo li .title {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 300px;
   margin-right: 20px;
 }
-.recruitP .inner .infoBlock .recruitInfo li .texts {
+.pageContents.recruitP .inner .infoBlock .recruitInfo li .texts {
   width: 100%;
 }
-.recruitP .inner .noRecruiting {
+.pageContents.recruitP .inner .noRecruiting {
   font-size: 1.2rem;
   text-align: center;
   padding: 100px;
@@ -115,40 +138,20 @@ html {
   transform: translateY(0px);
 }
 
-.supportP.contents {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 80vh;
-  margin-top: 150px;
-}
-.supportP.contents .inner {
-  width: 100%;
-  padding: 0px 50px;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-.supportP.contents .inner h2 {
-  font-size: 1.8rem;
-  font-weight: 900;
-}
-.supportP.contents .inner form {
+.pageContents.supportP .inner form {
   display: flex;
   flex-flow: column;
   width: 100%;
   max-width: 720px;
   margin: 50px;
 }
-.supportP.contents .inner form label {
+.pageContents.supportP .inner form label {
   display: flex;
   flex-flow: column;
   margin-bottom: 10px;
+  cursor: default;
 }
-.supportP.contents .inner form input, .supportP.contents .inner form textarea {
+.pageContents.supportP .inner form input, .pageContents.supportP .inner form textarea {
   float: left;
   width: 100%;
   max-width: 100%;
@@ -159,26 +162,26 @@ html {
   background: #f1f1f1;
   color: black;
 }
-.supportP.contents .inner form input[type=submit], .supportP.contents .inner form textarea[type=submit] {
+.pageContents.supportP .inner form input[type=submit], .pageContents.supportP .inner form textarea[type=submit] {
   background: red;
   color: #fff;
   width: auto;
   float: right;
 }
-.supportP.contents .inner form input::-moz-placeholder, .supportP.contents .inner form textarea::-moz-placeholder {
+.pageContents.supportP .inner form input::-moz-placeholder, .pageContents.supportP .inner form textarea::-moz-placeholder {
   color: #c6c6c6;
 }
-.supportP.contents .inner form input::placeholder, .supportP.contents .inner form textarea::placeholder {
+.pageContents.supportP .inner form input::placeholder, .pageContents.supportP .inner form textarea::placeholder {
   color: #c6c6c6;
 }
-.supportP.contents .btn-A {
+.pageContents.supportP .btn-A {
   width: 100px;
 }
-.supportP.contents .btnArea {
+.pageContents.supportP .btnArea {
   display: flex;
   align-items: center;
 }
-.supportP.contents .btnArea .errorMessage {
+.pageContents.supportP .btnArea .errorMessage {
   color: red;
   margin-left: 20px;
 }
@@ -188,42 +191,32 @@ html {
     padding: 0px 20px;
   }
 }
-.privacyP.contents {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.privacyP.contents .inner {
-  padding-top: 120px;
-  padding: 100px 100px 100px 100px;
-  width: 100%;
-}
-.privacyP.contents .inner h2 {
+.pageContents.privacyP .inner h2 {
   font-size: 1.4rem;
   font-weight: 500;
   margin-bottom: 30px;
 }
-.privacyP.contents .inner h3 {
+.pageContents.privacyP .inner h3 {
   font-size: 1.2rem;
   margin: 20px 0px;
 }
-.privacyP.contents .inner h4 {
+.pageContents.privacyP .inner h4 {
   font-size: 1.1rem;
   margin-bottom: 10px;
 }
-.privacyP.contents .inner p {
+.pageContents.privacyP .inner p {
   margin: 10px 0px;
 }
-.privacyP.contents .inner ul {
+.pageContents.privacyP .inner ul {
   margin: 10px 0px;
 }
-.privacyP.contents .inner ul li {
+.pageContents.privacyP .inner ul li {
   margin-left: 20px;
 }
-.privacyP.contents .inner .block {
+.pageContents.privacyP .inner .block {
   margin: 60px 0px;
 }
-.privacyP.contents .inner .block .shomei {
+.pageContents.privacyP .inner .block .shomei {
   text-align: end;
 }
 
@@ -511,6 +504,9 @@ footer {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   color: white;
 }
 .KeyVisual .content {

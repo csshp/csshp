@@ -2,14 +2,8 @@ $responsive1: 1100px;
 $responsive2: 700px;
 $responsive3: 500px;
 
-.privacyP.contents {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.pageContents.privacyP {
     & .inner {
-        padding-top: 120px;
-        padding: 100px 100px 100px 100px;
-        width: 100%;
         & h2 {
             font-size: 1.4rem;
             font-weight: 500;

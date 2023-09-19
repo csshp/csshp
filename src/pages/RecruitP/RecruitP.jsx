@@ -6,10 +6,10 @@ export const RecruitP = (props) => {
     return (
         <>
             <Header page={"recruit"} scrolledClass={true}></Header>
-            <div className="recruitP">
+            <div className="pageContents recruitP">
                 <div className="inner">
+                <h2 className="pageTitle">採用情報</h2>
                     <div className="infoBlock">
-                        <h2 className="title">採用情報</h2>
                         {props.recruit ? (
                             <ul className="recruitInfo">
                                 <li>

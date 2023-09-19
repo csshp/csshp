@@ -24,3 +24,43 @@ html {
 .nowrap{
     white-space: nowrap;
 }
+
+.pageTitle{
+    text-align: center;
+    font-size: 1.8rem !important;
+    padding: 30px 0px;
+}
+
+.pageContents{
+    padding-top: 120px;
+    & .inner{
+        width: 100%;
+        padding: 0px 100px;
+
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media (max-width:variables.$responsive1){
+    .pageContents{
+        & .inner{
+            padding: 0px 80px;
+        }
+    }
+}
+@media (max-width:variables.$responsive2){
+    .pageContents{
+        & .inner{
+            padding: 0px 50px;
+        }
+    }
+}
+@media (max-width:variables.$responsive3){
+    .pageContents{
+        & .inner{
+            padding: 0px 20px;
+        }
+    }
+}

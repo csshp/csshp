@@ -14,8 +14,9 @@ export const PrivacyP = () => {
     return (
         <>
             <Header page={"privacy"} scrolledClass={true}></Header>
-            <div className="privacyP contents">
+            <div className="pageContents privacyP">
                 <div className="inner">
+                    <h2 className="pageTitle">プライバシーポリシー</h2>
                     <div className="block">
                         <h2>個人情報保護方針</h2>
                         <p>

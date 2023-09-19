@@ -1,11 +1,5 @@
-.recruitP {
-    padding: 100px 0px;
-    min-height: 96vh;
+.pageContents.recruitP {
     & .inner {
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        justify-content: center;
         & .infoBlock {
             width: 100%;
             max-width: 1000px;

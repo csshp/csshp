@@ -13,9 +13,9 @@ export const SupportP = () => {
     return (
         <>
             <Header page={"privacy"} scrolledClass={true}></Header>
-            <div className="supportP contents">
+            <div className="pageContents supportP">
                 <div className="inner">
-                    <h2>お問い合わせ</h2>
+                    <h2 className="pageTitle">お問い合わせ</h2>
                     <Form toggleModal={toggleModal}></Form>
                 </div>
             </div>
