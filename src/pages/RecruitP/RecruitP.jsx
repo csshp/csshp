@@ -2,7 +2,9 @@ import React from "react";
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 
-export const RecruitP = (props) => {
+export const RecruitP = () => {
+    let recruitingStatus = null;
+    process.env.REACT_APP_RECRUITING == "true" ? (recruitingStatus = true) : (recruitingStatus = false);
     return (
         <>
             <Header page={"recruit"} scrolledClass={true}></Header>
@@ -10,7 +12,7 @@ export const RecruitP = (props) => {
                 <div className="inner">
                 <h2 className="pageTitle">採用情報</h2>
                     <div className="infoBlock">
-                        {props.recruit ? (
+                        {recruitingStatus ? (
                             <ul className="recruitInfo">
                                 <li>
                                     <p className="title">職種</p>

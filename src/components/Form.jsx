@@ -45,40 +45,47 @@ export const Form = (props) => {
         setinputMessage("");
     };
 
-    const formSubmit = (bool, form) => {
+    const sendGoogleForm = (bool, form) => {
         if (bool) {
             form.submit();
+            console.log("GoogleFormにお問い合わせが送信されました。");
         }
     };
 
-    const sendMailByEmailjs = () => {
-        const emailJsIds = {
-            publicID: process.env.REACT_APP_EMAILJS_PUBLIC_ID,
-            serviceID: process.env.REACT_APP_EMAILJS_SERVICE_ID,
-            templateID: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-        };
-        if (emailJsIds.publicID !== undefined && emailJsIds.serviceID !== undefined && emailJsIds.templateID !== undefined) {
-            init(emailJsIds.publicID);
-            const template_param = {
-                emj_name: inputName,
-                emj_email: inputEmail,
-                emj_title: inputTitle,
-                emj_message: inputMessage,
+    const sendMailByEmailjs = (bool) => {
+        if (bool) {
+            const emailJsIds = {
+                publicID: process.env.REACT_APP_EMAILJS_PUBLIC_ID,
+                serviceID: process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                templateID: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
             };
-            console.log(template_param);
-
-            send(emailJsIds.serviceID, emailJsIds.templateID, template_param).then(() => {
-                console.log("EmaijJsでメールを送信しました");
-            });
-        } else {
-            console.log("EmailJSに必要な情報が読み込まれませんでした。");
+            console.log();
+            if (emailJsIds.publicID !== undefined && emailJsIds.serviceID !== undefined && emailJsIds.templateID !== undefined) {
+                init(emailJsIds.publicID);
+                const template_param = {
+                    emj_name: inputName,
+                    emj_email: inputEmail,
+                    emj_title: inputTitle,
+                    emj_message: inputMessage,
+                };
+                send(emailJsIds.serviceID, emailJsIds.templateID, template_param).then(() => {
+                    console.log("EmailJSによりお問い合わせメールが送信されました。");
+                    resetInputs();
+                });
+                props.toggleModal(true);
+            } else {
+                console.warn("EmailJSに必要な情報が読み込まれませんでした。envファイル（環境変数）を確認してください。");
+                console.warn(emailJsIds);
+            }
         }
     };
+
+    let enableEmailJs = null;
+    process.env.REACT_APP_ENABLE_EMAILJS == "true" ? (enableEmailJs = true) : (enableEmailJs = false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        formSubmit(validateForm(), e.target);
-        // sendMailByEmailjs();
+        enableEmailJs ? sendMailByEmailjs(validateForm()) : sendGoogleForm(validateForm(), e.target);
     };
 
     return (
