@@ -64,9 +64,10 @@ export const Form = (props) => {
     };
 
     const datas = callNetlifyFunctionGetEmailJsIDs();
-    console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_PUBLIC_ID);
-    console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_SERVICE_ID);
-    console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_TEMPLATE_ID);
+    console.log(datas);
+    // console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_PUBLIC_ID);
+    // console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_SERVICE_ID);
+    // console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_TEMPLATE_ID);
 
     const sendGoogleForm = (bool, form) => {
         if (bool) {
