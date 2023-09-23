@@ -83,6 +83,7 @@ export const Form = (props) => {
 
     let enableEmailJs = null;
     process.env.REACT_APP_ENABLE_EMAILJS == "true" ? (enableEmailJs = true) : (enableEmailJs = false);
+    console.log("環境変数テスト:"+process.env.REACT_APP_NETLIFY_TEST);
 
     const handleSubmit = (e) => {
         e.preventDefault();
