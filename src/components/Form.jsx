@@ -65,9 +65,9 @@ export const Form = (props) => {
 
     callNetlifyFunctionGetEmailJsIDs().then((result)=>{
         console.log(result);
-        console.log(result.emailJsIds.REACT_APP_EMAILJS_PUBLIC_ID);
-        console.log(result.emailJsIds.REACT_APP_EMAILJS_SERVICE_ID);
-        console.log(result.emailJsIds.REACT_APP_EMAILJS_TEMPLATE_ID);
+        console.log(result.emailJsIds.publicID);
+        console.log(result.emailJsIds.serviceID);
+        console.log(result.emailJsIds.templateID);
     })
 
     const sendGoogleForm = (bool, form) => {
