@@ -91,7 +91,7 @@ export const Form = (props) => {
     };
 
     useEffect(() => {
-        enableEmailJs ? (sendBy.current.textContent = "Send by EmailJS") : (sendBy.current.textContent = "Send to GoogleForm");
+        enableEmailJs ? (sendBy.current.textContent = "Send EmailJS") : (sendBy.current.textContent = "Send GoogleForm");
         return () => {};
     }, []);
 
