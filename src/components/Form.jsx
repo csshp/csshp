@@ -63,13 +63,6 @@ export const Form = (props) => {
         }
     };
 
-    callNetlifyFunctionGetEmailJsIDs().then((result)=>{
-        console.log(result);
-        console.log(result.emailJsIds.publicID);
-        console.log(result.emailJsIds.serviceID);
-        console.log(result.emailJsIds.templateID);
-    })
-
     const sendGoogleForm = (bool, form) => {
         if (bool) {
             form.submit();
@@ -79,28 +72,31 @@ export const Form = (props) => {
 
     const sendMailByEmailjs = (bool) => {
         if (bool) {
-            const emailJsIds = {
-                publicID: process.env.REACT_APP_EMAILJS_PUBLIC_ID,
-                serviceID: process.env.REACT_APP_EMAILJS_SERVICE_ID,
-                templateID: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-            };
-            if (emailJsIds.publicID !== undefined && emailJsIds.serviceID !== undefined && emailJsIds.templateID !== undefined) {
-                init(emailJsIds.publicID);
-                const template_param = {
-                    emj_name: inputName,
-                    emj_email: inputEmail,
-                    emj_title: inputTitle,
-                    emj_message: inputMessage,
+            callNetlifyFunctionGetEmailJsIDs().then((result) => {
+                const emailJsIds = {
+                    publicID: result.emailJsIds.publicID,
+                    serviceID: result.emailJsIds.serviceID,
+                    templateID: result.emailJsIds.templateID,
                 };
-                send(emailJsIds.serviceID, emailJsIds.templateID, template_param).then(() => {
-                    console.log("EmailJSによりお問い合わせメールが送信されました。");
-                    resetInputs();
-                });
-                props.toggleModal(true);
-            } else {
-                console.warn("EmailJSに必要な情報が読み込まれませんでした。envファイル（環境変数）を確認してください。");
-                console.warn(emailJsIds);
-            }
+
+                if (emailJsIds.publicID !== undefined && emailJsIds.serviceID !== undefined && emailJsIds.templateID !== undefined) {
+                    init(emailJsIds.publicID);
+                    const template_param = {
+                        emj_name: inputName,
+                        emj_email: inputEmail,
+                        emj_title: inputTitle,
+                        emj_message: inputMessage,
+                    };
+                    send(emailJsIds.serviceID, emailJsIds.templateID, template_param).then(() => {
+                        console.log("EmailJSによりお問い合わせメールが送信されました。");
+                        resetInputs();
+                    });
+                    props.toggleModal(true);
+                } else {
+                    console.warn("EmailJSに必要な情報が読み込まれませんでした。envファイル（環境変数）を確認してください。");
+                    console.warn(emailJsIds);
+                }
+            });
         }
     };
 
