@@ -49,7 +49,7 @@ export const Form = (props) => {
     const sendGoogleForm = (bool, form) => {
         if (bool) {
             form.submit();
-            console.log("GoogleFormにお問い合わせが送信されました。");
+            console.log("GoogleFormにお問い合わせが送信されました。 ");
         }
     };
 
