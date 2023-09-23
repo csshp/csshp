@@ -15,14 +15,12 @@ function newGoogleMap() {
     const { isLoaded } = useJsApiLoader({
         id: "google-map-script",
         googleMapsApiKey: "AIzaSyBOOFl7VgudDn4OsqQ_u-ClLNRj7xMXDpo",
+        language: "ja",
     });
 
     const [map, setMap] = React.useState(null);
 
     const onLoad = React.useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds(position);
-        map.fitBounds(bounds);
-
         setMap(map);
     }, []);
 
@@ -31,7 +29,7 @@ function newGoogleMap() {
     }, []);
 
     return isLoaded ? (
-        <GoogleMap mapContainerStyle={containerStyle} center={position} zoom={1} onLoad={onLoad} onUnmount={onUnmount}>
+        <GoogleMap mapContainerStyle={containerStyle} center={position} zoom={16} onLoad={onLoad} onUnmount={onUnmount}>
             <Marker position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
         </GoogleMap>
     ) : (

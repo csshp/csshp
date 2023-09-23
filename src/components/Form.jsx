@@ -70,8 +70,6 @@ export const Form = (props) => {
         }
     };
 
-    console.log("ENV="+process.env.REACT_APP_ENV);
-
     const sendMailByEmailjs = (bool) => {
         if (bool) {
             callNetlifyFunctionGetEmailJsIDs().then((result) => {
@@ -80,7 +78,6 @@ export const Form = (props) => {
                     serviceID: result.emailJsIds.serviceID,
                     templateID: result.emailJsIds.templateID,
                 };
-
                 if (emailJsIds.publicID !== undefined && emailJsIds.serviceID !== undefined && emailJsIds.templateID !== undefined) {
                     init(emailJsIds.publicID);
                     const template_param = {
