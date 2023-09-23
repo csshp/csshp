@@ -1,5 +1,5 @@
-import React from "react";
-import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
+import React, { useEffect, useState } from "react";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 export const Map = () => {
     const container = {
@@ -12,38 +12,39 @@ export const Map = () => {
         lng: 141.33781368899332,
     };
 
-    const callNetlifyFunctionGetGoogleMapAPIKey = async () => {
-        try {
-            const endpoint = "/.netlify/functions/getGoogleMapAPI";
-            const response = await fetch(endpoint);
+    const [googleMapAPIKey, setGoogleMapAPIKey] = useState(null);
 
-            if (response.ok) {
-                const data = await response.json();
-                return data;
-            } else {
-                console.error("エラー:", response.status);
+    useEffect(() => {
+        const callNetlifyFunctionGetGoogleMapAPIKey = async () => {
+            try {
+                const endpoint = "/.netlify/functions/getGoogleMapAPI";
+                const response = await fetch(endpoint);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setGoogleMapAPIKey(data.googleMapAPIKey);
+                } else {
+                    console.error("エラー:", response.status);
+                }
+            } catch (error) {
+                console.error("エラー:", error);
             }
-        } catch (error) {
-            console.error("エラー:", error);
-        }
-    };
-    callNetlifyFunctionGetGoogleMapAPIKey().then((result) => {
-        const apiKey = result.googleMapAPIKey;
-        const existingScript = document.querySelector(`script[src^="https://maps.googleapis.com/maps/api/js?key=${apiKey}"]`);
-        if (existingScript) {
-            return (
-                <GoogleMap mapContainerStyle={container} center={position} zoom={15}>
-                    <MarkerF position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
-                </GoogleMap>
-            );
-        } else {
-            return (
-                <LoadScript id="script-loader" googleMapsApiKey={apiKey}>
+        };
+
+        callNetlifyFunctionGetGoogleMapAPIKey();
+    }, []);
+
+    return (
+        <div>
+            {googleMapAPIKey ? (
+                <LoadScript id="script-loader" googleMapsApiKey={googleMapAPIKey}>
                     <GoogleMap mapContainerStyle={container} center={position} zoom={15}>
-                        <MarkerF position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
+                        <Marker position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
                     </GoogleMap>
                 </LoadScript>
-            );
-        }
-    });
+            ) : (
+                <p>Google Maps APIキーを取得中...</p>
+            )}
+        </div>
+    );
 };
