@@ -100,11 +100,9 @@ export const Form = (props) => {
                 // ここでAPIキーを使用して何かを行うことができます
                 console.log("APIキー:", apiKey);
             } else {
-                // エラーレスポンスを処理
                 console.error("エラー:", response.status);
             }
         } catch (error) {
-            // エラーをキャッチ
             console.error("エラー:", error);
         }
     }
