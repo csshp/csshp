@@ -17,6 +17,11 @@ export const Form = (props) => {
     const [inputTitle, setinputTitle] = useState("");
     const [inputMessage, setinputMessage] = useState("");
 
+    const datas = callNetlifyFunctionGetEmailJsIDs();
+    console.log("NetlifyFunction:"+datas.emailJsIds.REACT_APP_EMAILJS_PUBLIC_ID);
+    console.log("NetlifyFunction:"+datas.emailJsIds.REACT_APP_EMAILJS_SERVICE_ID);
+    console.log("NetlifyFunction:"+datas.emailJsIds.REACT_APP_EMAILJS_TEMPLATE_ID);
+
     const handleChange = (e, setStateFunction) => {
         setStateFunction(e.target.value);
     };
@@ -60,7 +65,6 @@ export const Form = (props) => {
                 serviceID: process.env.REACT_APP_EMAILJS_SERVICE_ID,
                 templateID: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
             };
-            console.log();
             if (emailJsIds.publicID !== undefined && emailJsIds.serviceID !== undefined && emailJsIds.templateID !== undefined) {
                 init(emailJsIds.publicID);
                 const template_param = {
@@ -81,26 +85,22 @@ export const Form = (props) => {
         }
     };
 
-    // Reactコンポーネント内でNetlify Functionsを呼び出す関数を定義
-    async function callNetlifyFunction() {
+    const callNetlifyFunctionGetEmailJsIDs = async () => {
         try {
-            // Netlify FunctionsのエンドポイントURLを指定
-            const endpoint = "/.netlify/functions/access-api-key";
-
-            // リクエストを送信
+            const endpoint = "/.netlify/functions/getEmailJsIDs";
             const response = await fetch(endpoint);
 
             if (response.ok) {
                 // レスポンスからデータを取得
                 const data = await response.json();
-                console.log("APIキー:", data);
+                return data;
             } else {
                 console.error("エラー:", response.status);
             }
         } catch (error) {
             console.error("エラー:", error);
         }
-    }
+    };
 
     callNetlifyFunction();
 
