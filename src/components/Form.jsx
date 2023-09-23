@@ -93,12 +93,7 @@ export const Form = (props) => {
             if (response.ok) {
                 // レスポンスからデータを取得
                 const data = await response.json();
-
-                // 環境変数から取得したAPIキーを使用
-                const apiKey = data.apiKey;
-
-                // ここでAPIキーを使用して何かを行うことができます
-                console.log("APIキー:", apiKey);
+                console.log("APIキー:", data);
             } else {
                 console.error("エラー:", response.status);
             }
