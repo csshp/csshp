@@ -70,6 +70,8 @@ export const Form = (props) => {
         }
     };
 
+    console.log("ENV="+process.env.REACT_APP_ENV);
+
     const sendMailByEmailjs = (bool) => {
         if (bool) {
             callNetlifyFunctionGetEmailJsIDs().then((result) => {
@@ -90,8 +92,8 @@ export const Form = (props) => {
                     send(emailJsIds.serviceID, emailJsIds.templateID, template_param).then(() => {
                         console.log("EmailJSによりお問い合わせメールが送信されました。");
                         resetInputs();
+                        props.toggleModal(true);
                     });
-                    props.toggleModal(true);
                 } else {
                     console.warn("EmailJSに必要な情報が読み込まれませんでした。envファイル（環境変数）を確認してください。");
                     console.warn(emailJsIds);
