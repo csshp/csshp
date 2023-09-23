@@ -38,24 +38,39 @@ export const Map = () => {
         return () => {};
     }, []);
 
-    if (googleMapAPIKey !== "") {
-        return <p>ロード中...</p>;
-    } else {
-        const existingScript = document.querySelector(`script[src^="https://maps.googleapis.com/maps/api/js?key=${apiKey}"]`);
-        if (existingScript) {
-            return (
+    {
+        googleMapAPIKey !== "" ? (
+            <p>ロード中...</p>
+        ) : document.querySelector(`script[src^="https://maps.googleapis.com/maps/api/js?key=${googleMapAPIKey}"]`) ? (
+            <GoogleMap mapContainerStyle={container} center={position} zoom={15}>
+                <MarkerF position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
+            </GoogleMap>
+        ) : (
+            <LoadScript id="script-loader" googleMapsApiKey={googleMapAPIKey}>
                 <GoogleMap mapContainerStyle={container} center={position} zoom={15}>
                     <MarkerF position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
                 </GoogleMap>
-            );
-        } else {
-            return (
-                <LoadScript id="script-loader" googleMapsApiKey={apiKey}>
-                    <GoogleMap mapContainerStyle={container} center={position} zoom={15}>
-                        <MarkerF position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
-                    </GoogleMap>
-                </LoadScript>
-            );
-        }
+            </LoadScript>
+        );
     }
+    // if (googleMapAPIKey !== "") {
+    //     return <p>ロード中...</p>;
+    // } else {
+    //     const existingScript = document.querySelector(`script[src^="https://maps.googleapis.com/maps/api/js?key=${apiKey}"]`);
+    //     if (existingScript) {
+    //         return (
+    //             <GoogleMap mapContainerStyle={container} center={position} zoom={15}>
+    //                 <MarkerF position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
+    //             </GoogleMap>
+    //         );
+    //     } else {
+    //         return (
+    //             <LoadScript id="script-loader" googleMapsApiKey={apiKey}>
+    //                 <GoogleMap mapContainerStyle={container} center={position} zoom={15}>
+    //                     <MarkerF position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
+    //                 </GoogleMap>
+    //             </LoadScript>
+    //         );
+    //     }
+    // }
 };
