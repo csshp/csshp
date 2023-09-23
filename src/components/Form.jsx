@@ -81,9 +81,38 @@ export const Form = (props) => {
         }
     };
 
+    // Reactコンポーネント内でNetlify Functionsを呼び出す関数を定義
+    async function callNetlifyFunction() {
+        try {
+            // Netlify FunctionsのエンドポイントURLを指定
+            const endpoint = "/.netlify/functions/access-api-key";
+
+            // リクエストを送信
+            const response = await fetch(endpoint);
+
+            if (response.ok) {
+                // レスポンスからデータを取得
+                const data = await response.json();
+
+                // 環境変数から取得したAPIキーを使用
+                const apiKey = data.apiKey;
+
+                // ここでAPIキーを使用して何かを行うことができます
+                console.log("APIキー:", apiKey);
+            } else {
+                // エラーレスポンスを処理
+                console.error("エラー:", response.status);
+            }
+        } catch (error) {
+            // エラーをキャッチ
+            console.error("エラー:", error);
+        }
+    }
+
+    callNetlifyFunction();
+
     let enableEmailJs = null;
     process.env.REACT_APP_ENABLE_EMAILJS == "true" ? (enableEmailJs = true) : (enableEmailJs = false);
-    console.log("環境変数テスト:"+process.env.REACT_APP_NETLIFY_TEST);
 
     const handleSubmit = (e) => {
         e.preventDefault();
