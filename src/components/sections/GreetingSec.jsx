@@ -17,7 +17,7 @@ export const GreetingSec = () => {
                     松原　久美子
                 </div>
             </div>
-            <img src={bg} alt="" className="bg js-rellax" data-rellax-percentage="0.2"/>
+            <img src={bg} alt="" className="bg js-rellax" data-rellax-percentage="0.3"/>
         </section>
     );
 };
