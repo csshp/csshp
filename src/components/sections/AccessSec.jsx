@@ -1,6 +1,6 @@
 import React from "react";
-import { Map } from "../GoogleMap";
 import bg from "../../images/keyvisual/access2.jpg";
+import NewGoogleMap from "../newGoogleMap";
 
 export const AccessSec = () => {
     return (
@@ -8,7 +8,7 @@ export const AccessSec = () => {
             <section className="access" id="access">
                 <div className="inner setV">
                     <h2>アクセス</h2>
-                    <Map></Map>
+                    <NewGoogleMap></NewGoogleMap>
                     <div className="adress">
                         <p>株式会社シーエスエス</p>
                         <p>〒060-0063　<span className="nowrap">札幌市中央区南３条西１３丁目３２０－１３　</span><span className="nowrap">アクアステージ４F</span></p>
