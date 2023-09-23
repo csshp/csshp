@@ -17,11 +17,6 @@ export const Form = (props) => {
     const [inputTitle, setinputTitle] = useState("");
     const [inputMessage, setinputMessage] = useState("");
 
-    const datas = callNetlifyFunctionGetEmailJsIDs();
-    console.log("NetlifyFunction:"+datas.emailJsIds.REACT_APP_EMAILJS_PUBLIC_ID);
-    console.log("NetlifyFunction:"+datas.emailJsIds.REACT_APP_EMAILJS_SERVICE_ID);
-    console.log("NetlifyFunction:"+datas.emailJsIds.REACT_APP_EMAILJS_TEMPLATE_ID);
-
     const handleChange = (e, setStateFunction) => {
         setStateFunction(e.target.value);
     };
@@ -50,6 +45,28 @@ export const Form = (props) => {
         setinputTitle("");
         setinputMessage("");
     };
+
+    const callNetlifyFunctionGetEmailJsIDs = async () => {
+        try {
+            const endpoint = "/.netlify/functions/getEmailJsIDs";
+            const response = await fetch(endpoint);
+
+            if (response.ok) {
+                // レスポンスからデータを取得
+                const data = await response.json();
+                return data;
+            } else {
+                console.error("エラー:", response.status);
+            }
+        } catch (error) {
+            console.error("エラー:", error);
+        }
+    };
+
+    const datas = callNetlifyFunctionGetEmailJsIDs();
+    console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_PUBLIC_ID);
+    console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_SERVICE_ID);
+    console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_TEMPLATE_ID);
 
     const sendGoogleForm = (bool, form) => {
         if (bool) {
@@ -84,25 +101,6 @@ export const Form = (props) => {
             }
         }
     };
-
-    const callNetlifyFunctionGetEmailJsIDs = async () => {
-        try {
-            const endpoint = "/.netlify/functions/getEmailJsIDs";
-            const response = await fetch(endpoint);
-
-            if (response.ok) {
-                // レスポンスからデータを取得
-                const data = await response.json();
-                return data;
-            } else {
-                console.error("エラー:", response.status);
-            }
-        } catch (error) {
-            console.error("エラー:", error);
-        }
-    };
-
-    callNetlifyFunction();
 
     let enableEmailJs = null;
     process.env.REACT_APP_ENABLE_EMAILJS == "true" ? (enableEmailJs = true) : (enableEmailJs = false);
