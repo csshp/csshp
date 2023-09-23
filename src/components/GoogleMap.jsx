@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 
 export const Map = () => {
@@ -12,27 +12,36 @@ export const Map = () => {
         lng: 141.33781368899332,
     };
 
-    const callNetlifyFunctionGetGoogleMapAPIKey = async () => {
-        try {
-            const endpoint = "/.netlify/functions/getGoogleMapAPI";
-            const response = await fetch(endpoint);
+    const [googleMapAPIKey, setGoogleMapAPIKey] = useState(null);
 
-            if (response.ok) {
-                const data = await response.json();
-                return data;
-            } else {
-                console.error("エラー:", response.status);
+    useEffect(() => {
+        const callNetlifyFunctionGetGoogleMapAPIKey = async () => {
+            try {
+                const endpoint = "/.netlify/functions/getGoogleMapAPI";
+                const response = await fetch(endpoint);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setGoogleMapAPIKey(data.googleMapAPIKey);
+                } else {
+                    console.error("エラー:", response.status);
+                }
+            } catch (error) {
+                console.error("エラー:", error);
             }
-        } catch (error) {
-            console.error("エラー:", error);
-        }
-    };
-    callNetlifyFunctionGetGoogleMapAPIKey().then((r)=>{
-        console.log(r.googleMapAPIKey);
-    })
+        };
 
-    const apiKey = "AIzaSyBOOFl7VgudDn4OsqQ_u-ClLNRj7xMXDpo";
+        callNetlifyFunctionGetGoogleMapAPIKey();
+    }, []);
+
+    if (googleMapAPIKey === null) {
+        return <div>ロード中...</div>;
+    }
+
+    const apiKey = googleMapAPIKey || "AIzaSyBOOFl7VgudDn4OsqQ_u-ClLNRj7xMXDpo";
+
     const existingScript = document.querySelector(`script[src^="https://maps.googleapis.com/maps/api/js?key=${apiKey}"]`);
+    
     if (existingScript) {
         return (
             <GoogleMap mapContainerStyle={container} center={position} zoom={15}>
