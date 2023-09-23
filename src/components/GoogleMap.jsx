@@ -32,10 +32,12 @@ export const Map = () => {
 
     useEffect(() => {
         callNetlifyFunctionGetGoogleMapAPIKey();
+        setTimeout(() => {
+            setGoogleMapAPIKey("AIzaSyBOOFl7VgudDn4OsqQ_u-ClLNRj7xMXDpo");
+        }, 10000);
         return () => {};
     }, []);
 
-    const apiKey = "AIzaSyBOOFl7VgudDn4OsqQ_u-ClLNRj7xMXDpo";
     if (googleMapAPIKey !== "") {
         return <p>ロード中...</p>;
     } else {
