@@ -28,8 +28,7 @@ export const Map = () => {
         }
     };
     callNetlifyFunctionGetGoogleMapAPIKey().then((result) => {
-        const apiKey = result;
-        console.log(result);
+        const apiKey = result.googleMapAPIKey;
         const existingScript = document.querySelector(`script[src^="https://maps.googleapis.com/maps/api/js?key=${apiKey}"]`);
         if (existingScript) {
             return (
