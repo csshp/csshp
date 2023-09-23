@@ -63,8 +63,9 @@ export const Form = (props) => {
         }
     };
 
-    const datas = callNetlifyFunctionGetEmailJsIDs();
-    console.log(datas);
+    callNetlifyFunctionGetEmailJsIDs().then((result)=>{
+        console.log(result);
+    })
     // console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_PUBLIC_ID);
     // console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_SERVICE_ID);
     // console.log("NetlifyFunction:" + datas.emailJsIds.REACT_APP_EMAILJS_TEMPLATE_ID);
