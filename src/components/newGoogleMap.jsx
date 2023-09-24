@@ -18,18 +18,8 @@ function newGoogleMap() {
         language: "ja",
     });
 
-    const [map, setMap] = React.useState(null);
-
-    const onLoad = React.useCallback(function callback(map) {
-        setMap(map);
-    }, []);
-
-    const onUnmount = React.useCallback(function callback(map) {
-        setMap(null);
-    }, []);
-
     return isLoaded ? (
-        <GoogleMap mapContainerStyle={containerStyle} center={position} zoom={16} onLoad={onLoad} onUnmount={onUnmount}>
+        <GoogleMap mapContainerStyle={containerStyle} center={position} zoom={16}>
             <Marker position={position} icon={"https://maps.google.com/mapfiles/kml/paddle/purple-blank.png"} />
         </GoogleMap>
     ) : (
